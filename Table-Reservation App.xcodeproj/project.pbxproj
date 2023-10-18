@@ -9,21 +9,33 @@
 /* Begin PBXBuildFile section */
 		FE6754192ADEAC9C0079C15E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6754182ADEAC9C0079C15E /* AppDelegate.swift */; };
 		FE67541B2ADEAC9C0079C15E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE67541A2ADEAC9C0079C15E /* SceneDelegate.swift */; };
-		FE67541D2ADEAC9C0079C15E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE67541C2ADEAC9C0079C15E /* ViewController.swift */; };
-		FE6754202ADEAC9C0079C15E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE67541E2ADEAC9C0079C15E /* Main.storyboard */; };
+		FE67541D2ADEAC9C0079C15E /* RestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE67541C2ADEAC9C0079C15E /* RestaurantViewController.swift */; };
 		FE6754222ADEAC9D0079C15E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE6754212ADEAC9D0079C15E /* Assets.xcassets */; };
 		FE6754252ADEAC9D0079C15E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE6754232ADEAC9D0079C15E /* LaunchScreen.storyboard */; };
+		FE6754302ADEBAB30079C15E /* FakeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE67542F2ADEBAB30079C15E /* FakeModel.swift */; };
+		FE9A79A72ADECE5F00946AA7 /* StyledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9A79A62ADECE5F00946AA7 /* StyledButton.swift */; };
+		FE9A79A92ADECF5900946AA7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9A79A82ADECF5900946AA7 /* User.swift */; };
+		FE9A79AB2ADECF8700946AA7 /* Reservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9A79AA2ADECF8700946AA7 /* Reservation.swift */; };
+		FE9A79AD2ADED3A500946AA7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9A79AC2ADED3A500946AA7 /* Constants.swift */; };
+		FE9A79AF2ADEE07600946AA7 /* CustomToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9A79AE2ADEE07600946AA7 /* CustomToolbar.swift */; };
+		FE9A79B12ADEE17000946AA7 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9A79B02ADEE17000946AA7 /* CustomButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FE6754152ADEAC9C0079C15E /* Table-Reservation App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Table-Reservation App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE6754182ADEAC9C0079C15E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE67541A2ADEAC9C0079C15E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FE67541C2ADEAC9C0079C15E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		FE67541F2ADEAC9C0079C15E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FE67541C2ADEAC9C0079C15E /* RestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantViewController.swift; sourceTree = "<group>"; };
 		FE6754212ADEAC9D0079C15E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FE6754242ADEAC9D0079C15E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FE6754262ADEAC9D0079C15E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE67542F2ADEBAB30079C15E /* FakeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeModel.swift; sourceTree = "<group>"; };
+		FE9A79A62ADECE5F00946AA7 /* StyledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledButton.swift; sourceTree = "<group>"; };
+		FE9A79A82ADECF5900946AA7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		FE9A79AA2ADECF8700946AA7 /* Reservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reservation.swift; sourceTree = "<group>"; };
+		FE9A79AC2ADED3A500946AA7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		FE9A79AE2ADEE07600946AA7 /* CustomToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToolbar.swift; sourceTree = "<group>"; };
+		FE9A79B02ADEE17000946AA7 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +68,61 @@
 		FE6754172ADEAC9C0079C15E /* Table-Reservation App */ = {
 			isa = PBXGroup;
 			children = (
-				FE6754182ADEAC9C0079C15E /* AppDelegate.swift */,
-				FE67541A2ADEAC9C0079C15E /* SceneDelegate.swift */,
-				FE67541C2ADEAC9C0079C15E /* ViewController.swift */,
-				FE67541E2ADEAC9C0079C15E /* Main.storyboard */,
+				FE9A79A52ADECE3400946AA7 /* Constants */,
+				FE9A79A42ADECE2700946AA7 /* UIElements */,
+				FE67542E2ADEB6AC0079C15E /* Model */,
+				FE67542D2ADEACCD0079C15E /* View */,
+				FE67542C2ADEACB20079C15E /* App */,
 				FE6754212ADEAC9D0079C15E /* Assets.xcassets */,
 				FE6754232ADEAC9D0079C15E /* LaunchScreen.storyboard */,
 				FE6754262ADEAC9D0079C15E /* Info.plist */,
 			);
 			path = "Table-Reservation App";
+			sourceTree = "<group>";
+		};
+		FE67542C2ADEACB20079C15E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				FE67541A2ADEAC9C0079C15E /* SceneDelegate.swift */,
+				FE6754182ADEAC9C0079C15E /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		FE67542D2ADEACCD0079C15E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FE67541C2ADEAC9C0079C15E /* RestaurantViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FE67542E2ADEB6AC0079C15E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FE67542F2ADEBAB30079C15E /* FakeModel.swift */,
+				FE9A79A82ADECF5900946AA7 /* User.swift */,
+				FE9A79AA2ADECF8700946AA7 /* Reservation.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FE9A79A42ADECE2700946AA7 /* UIElements */ = {
+			isa = PBXGroup;
+			children = (
+				FE9A79A62ADECE5F00946AA7 /* StyledButton.swift */,
+				FE9A79AE2ADEE07600946AA7 /* CustomToolbar.swift */,
+				FE9A79B02ADEE17000946AA7 /* CustomButton.swift */,
+			);
+			path = UIElements;
+			sourceTree = "<group>";
+		};
+		FE9A79A52ADECE3400946AA7 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				FE9A79AC2ADED3A500946AA7 /* Constants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +185,6 @@
 			files = (
 				FE6754252ADEAC9D0079C15E /* LaunchScreen.storyboard in Resources */,
 				FE6754222ADEAC9D0079C15E /* Assets.xcassets in Resources */,
-				FE6754202ADEAC9C0079C15E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +195,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE67541D2ADEAC9C0079C15E /* ViewController.swift in Sources */,
+				FE67541D2ADEAC9C0079C15E /* RestaurantViewController.swift in Sources */,
+				FE9A79AF2ADEE07600946AA7 /* CustomToolbar.swift in Sources */,
 				FE6754192ADEAC9C0079C15E /* AppDelegate.swift in Sources */,
+				FE9A79A92ADECF5900946AA7 /* User.swift in Sources */,
+				FE9A79B12ADEE17000946AA7 /* CustomButton.swift in Sources */,
+				FE9A79A72ADECE5F00946AA7 /* StyledButton.swift in Sources */,
 				FE67541B2ADEAC9C0079C15E /* SceneDelegate.swift in Sources */,
+				FE9A79AB2ADECF8700946AA7 /* Reservation.swift in Sources */,
+				FE6754302ADEBAB30079C15E /* FakeModel.swift in Sources */,
+				FE9A79AD2ADED3A500946AA7 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		FE67541E2ADEAC9C0079C15E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FE67541F2ADEAC9C0079C15E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		FE6754232ADEAC9D0079C15E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -296,7 +352,6 @@
 				INFOPLIST_FILE = "Table-Reservation App/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -323,7 +378,6 @@
 				INFOPLIST_FILE = "Table-Reservation App/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

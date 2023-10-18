@@ -1,0 +1,46 @@
+//
+//  StyledButton.swift
+//  Table-Reservation App
+//
+//  Created by Tatiana Simmer on 17/10/2023.
+//
+
+import UIKit
+
+class StyledButton: UIButton {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setStyle()
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setStyle()
+    }
+
+    private func setStyle() {
+        self.setTitleColor(.white, for: .normal)
+        self.backgroundColor = UIColor(hex: "E9C46A") // Set background color to #E9C46A
+        self.layer.cornerRadius = 10.0 // Add rounded corners with a radius of 10
+        self.layer.borderColor = UIColor(hex: "F4A261").cgColor // Set border color to #F4A261
+        self.layer.borderWidth = 2.0 // Increase border width
+        self.titleLabel?.font = UIFont(name: "Print Clearly", size: 30)
+    }
+}
+
+extension UIColor {
+    convenience init(hex: String) {
+        var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)
+        hexSanitized = hexSanitized.replacingOccurrences(of: "#", with: "")
+
+        var rgb: UInt64 = 0
+
+        Scanner(string: hexSanitized).scanHexInt64(&rgb)
+
+        let red = CGFloat((rgb & 0xFF0000) >> 16) / 255.0
+        let green = CGFloat((rgb & 0x00FF00) >> 8) / 255.0
+        let blue = CGFloat(rgb & 0x0000FF) / 255.0
+
+        self.init(red: red, green: green, blue: blue, alpha: 1.0)
+    }
+}
