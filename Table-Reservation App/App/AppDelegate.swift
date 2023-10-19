@@ -16,7 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         window = UIWindow()
-        window?.rootViewController = RestaurantsViewController()
+        // Create an instance of the presenter
+        let restaurantsPresenter = RestaurantsPresenterImpl()
+        // Initialize the view controller with the presenter
+        let restaurantsViewController = RestaurantsViewController(presenter: restaurantsPresenter)
+        window?.rootViewController = restaurantsViewController
         window?.makeKeyAndVisible()
         return true
     }

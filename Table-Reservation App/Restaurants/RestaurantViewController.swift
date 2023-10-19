@@ -1,11 +1,35 @@
-import UIKit
+//
+//  RestaurantsViewController.swift
+//  Table-Reservation App
+//
+//  Created by Tatiana Simmer on 19/10/2023.
+//
 
 import UIKit
+
+protocol RestaurantsDisplayer: AnyObject {
+    func setup(viewModel: [Restaurant])
+}
 
 class RestaurantsViewController: UIViewController {
 
-    // Define your table view
+    // MARK: - Properties
+
     let tableView = UITableView()
+    var restaurantData: [Restaurant] = []
+    var presenter: RestaurantsPresenter
+
+    // MARK: - Initialization
+
+    init(presenter: RestaurantsPresenter) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +50,6 @@ class RestaurantsViewController: UIViewController {
         titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
 
-
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellIdentifier")
         tableView.delegate = self
         tableView.dataSource = self
@@ -38,7 +61,13 @@ class RestaurantsViewController: UIViewController {
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+
+        // Initialize the presenter and trigger the initial data setup
+        presenter = RestaurantsPresenterImpl()
+        presenter.bind(displayer: self)
+        presenter.onViewDidLoad()
     }
+
 }
 
 extension RestaurantsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -55,4 +84,14 @@ extension RestaurantsViewController: UITableViewDelegate, UITableViewDataSource 
 
         return cell
     }
+}
+
+
+// MARK: - RestaurantsDisplayer
+
+extension RestaurantsViewController: RestaurantsDisplayer {
+    func setup(viewModel: [Restaurant]) {
+         restaurantData = viewModel
+         tableView.reloadData()
+      }
 }
