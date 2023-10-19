@@ -38,7 +38,7 @@ class RestaurantsViewController: UIViewController {
 
         // Create a title label
         let titleLabel = UILabel()
-        titleLabel.text = "Restaurant List"
+        titleLabel.text = "Berry Table🫐"
         titleLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         titleLabel.textAlignment = .center
 
