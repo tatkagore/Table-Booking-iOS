@@ -78,11 +78,11 @@
 		FE6754172ADEAC9C0079C15E /* Table-Reservation App */ = {
 			isa = PBXGroup;
 			children = (
-				FE9A79B22AE126F700946AA7 /* Restaurants */,
 				FE9A79C22AE12E4400946AA7 /* Reservations */,
 				FE67542D2ADEACCD0079C15E /* Login */,
 				FE67542E2ADEB6AC0079C15E /* User */,
 				FE9A79A42ADECE2700946AA7 /* UIElements */,
+				FE9A79B22AE126F700946AA7 /* Restaurants */,
 				FE67542C2ADEACB20079C15E /* App */,
 				FE6754212ADEAC9D0079C15E /* Assets.xcassets */,
 				FE6754232ADEAC9D0079C15E /* LaunchScreen.storyboard */,

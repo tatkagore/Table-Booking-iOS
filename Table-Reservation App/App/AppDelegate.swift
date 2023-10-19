@@ -13,17 +13,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+//    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+//        // Override point for customization after application launch.
+//        window = UIWindow()
+//        // Create an instance of the presenter
+//        let restaurantsPresenter = RestaurantsPresenterImpl()
+//        // Initialize the view controller with the presenter
+//        let restaurantsViewController = RestaurantsViewController(presenter: restaurantsPresenter)
+//        window?.rootViewController = restaurantsViewController
+//        window?.makeKeyAndVisible()
+//        return true
+//    }
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         window = UIWindow()
-        // Create an instance of the presenter
-        let restaurantsPresenter = RestaurantsPresenterImpl()
-        // Initialize the view controller with the presenter
-        let restaurantsViewController = RestaurantsViewController(presenter: restaurantsPresenter)
-        window?.rootViewController = restaurantsViewController
+
+        // Create an instance of the LoginViewController as the initial view controller
+        let loginViewController = LoginViewController()
+        window?.rootViewController = loginViewController
         window?.makeKeyAndVisible()
+
         return true
     }
+
 
     // MARK: UISceneSession Lifecycle
 
