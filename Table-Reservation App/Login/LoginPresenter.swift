@@ -5,14 +5,13 @@
 //  Created by Tatiana Simmer on 19/10/2023.
 //
 
-
 import Foundation
-
 
 protocol LoginPresenter {
     func bind(displayer: LoginDisplayer)
-    func login(with model: LoginModel, completion: @escaping (Result<String, Error>) -> Void)
+    func didTapLogin(with model: LoginModel)
 }
+
 
 class LoginPresenterImpl: LoginPresenter {
     weak var displayer: LoginDisplayer?
@@ -21,18 +20,58 @@ class LoginPresenterImpl: LoginPresenter {
         self.displayer = displayer
     }
 
-    func login(with model: LoginModel, completion: @escaping (Result<String, Error>) -> Void) {
-        // Make a network request to your API to perform the login
-        // You can use URLSession, Alamofire, or another networking library here
-
-        // For demonstration purposes, we'll simulate a successful login
-        if model.username == "your_username" && model.password == "your_password" {
-            // Replace "your_username" and "your_password" with your actual validation logic
-            completion(.success("Login successful"))
-        } else {
-            // Replace this with actual error handling and error messages from your API
-            let error = NSError(domain: "LoginErrorDomain", code: 401, userInfo: [NSLocalizedDescriptionKey: "Invalid credentials"])
-            completion(.failure(error))
+    func didTapLogin(with model: LoginModel) {
+        guard let url = URL(string: "http://localhost:3000/auth/signin") else {
+            let error = NSError(domain: "NetworkErrorDomain", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid server URL"])
+//            completion(.failure(error))
+            return
         }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        let parameters: [String: Any] = [
+            "email": model.email,
+            "password": model.password
+        ]
+
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters)
+        } catch {
+//            completion(.failure(error))
+            return
+        }
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+//                completion(.failure(error))
+                return
+            }
+
+            guard let data = data else {
+                let error = NSError(domain: "NetworkErrorDomain", code: 1, userInfo: [NSLocalizedDescriptionKey: "No data received"])
+//                completion(.failure(error))
+                return
+            }
+
+            do {
+                let responseJSON = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+
+                if let token = responseJSON?["message"] as? String {
+//                    completion(.success(token))
+                } else if let errorMessage = responseJSON?["message"] as? String {
+                    let error = NSError(domain: "LoginErrorDomain", code: 401, userInfo: [NSLocalizedDescriptionKey: errorMessage])
+//                    completion(.failure(error))
+                } else {
+                    let error = NSError(domain: "LoginErrorDomain", code: 401, userInfo: [NSLocalizedDescriptionKey: "Invalid response from the server"])
+//                    completion(.failure(error))
+                }
+            } catch {
+//                completion(.failure(error))
+            }
+        }
+
+        task.resume()
     }
 }
