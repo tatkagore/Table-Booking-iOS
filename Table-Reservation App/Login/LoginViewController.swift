@@ -36,7 +36,6 @@ class LoginViewController: UIViewController {
     let loginButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Login", for: .normal)
-        button.addTarget(LoginViewController.self, action: #selector(loginButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -55,9 +54,7 @@ class LoginViewController: UIViewController {
         
         // Bind the view (self) to the presenter
         presenter.bind(displayer: self)
-        setupConstraints()
-//        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
-        
+        setupConstraints()        
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
 
     }
@@ -72,25 +69,6 @@ class LoginViewController: UIViewController {
 
         let loginModel = LoginModel(email: email, password: password)
         presenter.didTapLogin(with: loginModel)
-/*
-         presenter.didTapLogin(with: loginModel) { [weak self] result in
-            switch result {
-            case .success(let message):
-                // Handle successful login by navigating to the HomeViewController on the main thread
-                DispatchQueue.main.async {
-                    let homeViewController = HomeViewController()
-                    homeViewController.welcomeMessage = message
-
-                    // Push the HomeViewController onto the navigation stack
-                    self?.navigationController?.pushViewController(homeViewController, animated: true)
-                }
-
-            case .failure(let error):
-                DispatchQueue.main.async {
-                    print("Login error: \(error.localizedDescription)")
-                }
-            }
-        }  */
     }
 
 
@@ -98,6 +76,12 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController: LoginDisplayer {
     func show(viewController: UIViewController) {
+        DispatchQueue.main.async {
+            
+            self.navigationController?.pushViewController(viewController, animated: true)
+//            print("Login error: \(error.localizedDescription)")
+        }
+
     }
     
     func setup() {
