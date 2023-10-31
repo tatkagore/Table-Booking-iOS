@@ -8,16 +8,21 @@ import UIKit
 
 // Protocol to define methods for displaying the login interface
 protocol LoginDisplayer: AnyObject {
-    func setup()
 }
 
-class LoginViewController: UIViewController {
+// Protocol to define methods for handling login-related events
+protocol LoginPresenterDelegate: AnyObject {
+    func loginSuccessful(with token: String)
+    func loginFailed(with error: Error)
+}
+
+class LoginViewController: UIViewController, LoginDisplayer {
 
     // MARK: - Properties
 
-    let usernameTextField: UITextField = {
+    let emailTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Username"
+        textField.placeholder = "Email"
         textField.borderStyle = .roundedRect
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -40,7 +45,7 @@ class LoginViewController: UIViewController {
         return button
     }()
 
-    let presenter: LoginPresenter = LoginPresenterImpl()
+    var presenter: LoginPresenter = LoginPresenterImpl()
 
     // MARK: - View Lifecycle
 
@@ -48,9 +53,12 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
 
-        view.addSubview(usernameTextField)
+        view.addSubview(emailTextField)
         view.addSubview(passwordTextField)
         view.addSubview(loginButton)
+
+        presenter.delegate = self
+
 
         // Bind the view (self) to the presenter
         presenter.bind(displayer: self)
@@ -58,57 +66,35 @@ class LoginViewController: UIViewController {
     }
 
     // MARK: - Actions
-
-    @objc func loginButtonTapped() {
-        guard let username = usernameTextField.text, !username.isEmpty,
+    @objc
+    func loginButtonTapped() {
+        guard let email = emailTextField.text, !email.isEmpty,
               let password = passwordTextField.text, !password.isEmpty else {
-            // Handle empty fields, show an alert, or provide user feedback
             return
         }
 
-        let loginModel = LoginModel(username: username, password: password)
+        let loginModel = LoginModel(email: email, password: password)
+        presenter.didTapLogin(with: loginModel)
+    }
 
-        // Call the presenter's login method
-        presenter.login(with: loginModel) { [weak self] result in
-            switch result {
-            case .success(let message):
-                // Handle successful login (e.g., navigate to the next screen)
-                print(message)
-                // Replace this with your navigation code
-            case .failure(let error):
-                // Handle login error (e.g., show an error message)
-                print("Login error: \(error.localizedDescription)")
-                // Replace this with your error handling code
-            }
+
+}
+
+
+extension LoginViewController: LoginPresenterDelegate {
+    // Implement the delegate methods for successful and failed logins
+    func loginSuccessful(with message: String) {
+        print("login successful")
+
+        DispatchQueue.main.async {
+            let homeViewController = HomeViewController()
+            homeViewController.welcomeMessage = message
+            self.navigationController?.pushViewController(homeViewController, animated: true)
         }
     }
 
-
-}
-
-extension LoginViewController: LoginDisplayer {
-    func setup() {
-        // Implement any setup logic here if needed
-    }
-}
-
-
-extension LoginViewController {
-    // MARK: - Auto Layout
-
-    private func setupConstraints() {
-        NSLayoutConstraint.activate([
-            usernameTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            usernameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            usernameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-
-            passwordTextField.topAnchor.constraint(equalTo: usernameTextField.bottomAnchor, constant: 20),
-            passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-
-            loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20),
-            loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
-        ])
+    func loginFailed(with error: Error) {
+        // Handle login failure, e.g., display an alert
+        print("Login error: \(error.localizedDescription)")
     }
 }

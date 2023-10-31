@@ -10,29 +10,20 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
-//    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-//        guard let windowScene = (scene as? UIWindowScene) else { return }
-//        let window = UIWindow(windowScene: windowScene)
-//        // Create an instance of the presenter
-//        let restaurantsPresenter = RestaurantsPresenterImpl()
-//        // Initialize the view controller with the presenter
-//        let restaurantsViewController = RestaurantsViewController(presenter: restaurantsPresenter)
-//        window.rootViewController = restaurantsViewController
-//        self.window = window
-//        self.window?.makeKeyAndVisible()
-//    }
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let windowScene = (scene as? UIWindowScene) else { return }
-        let window = UIWindow(windowScene: windowScene)
+            guard let windowScene = (scene as? UIWindowScene) else { return }
+            let window = UIWindow(windowScene: windowScene)
 
-        // Create an instance of the LoginViewController as the initial view controller
-        let loginViewController = LoginViewController()
-        window.rootViewController = loginViewController
+            // Create an instance of the LoginViewController as the initial view controller
+            let loginViewController = LoginViewController()
+            let navigationController = UINavigationController(rootViewController: loginViewController) // Embed in a UINavigationController
 
-        self.window = window
-        self.window?.makeKeyAndVisible()
-    }
+            window.rootViewController = navigationController
+
+            self.window = window
+            self.window?.makeKeyAndVisible()
+        }
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
