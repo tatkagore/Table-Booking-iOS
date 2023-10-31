@@ -17,7 +17,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
             // Create an instance of the LoginViewController as the initial view controller
             let loginViewController = LoginViewController()
-            window.rootViewController = loginViewController
+            let navigationController = UINavigationController(rootViewController: loginViewController) // Embed in a UINavigationController
+
+            window.rootViewController = navigationController
 
             self.window = window
             self.window?.makeKeyAndVisible()

@@ -8,11 +8,15 @@ import UIKit
 
 // Protocol to define methods for displaying the login interface
 protocol LoginDisplayer: AnyObject {
-    func setup()
-    func show(viewController: UIViewController)
 }
 
-class LoginViewController: UIViewController {
+// Protocol to define methods for handling login-related events
+protocol LoginPresenterDelegate: AnyObject {
+    func loginSuccessful(with token: String)
+    func loginFailed(with error: Error)
+}
+
+class LoginViewController: UIViewController, LoginDisplayer {
 
     // MARK: - Properties
 
@@ -32,7 +36,7 @@ class LoginViewController: UIViewController {
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
-    
+
     let loginButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Login", for: .normal)
@@ -41,7 +45,7 @@ class LoginViewController: UIViewController {
         return button
     }()
 
-    let presenter: LoginPresenter = LoginPresenterImpl()
+    var presenter: LoginPresenter = LoginPresenterImpl()
 
     // MARK: - View Lifecycle
 
@@ -52,19 +56,18 @@ class LoginViewController: UIViewController {
         view.addSubview(emailTextField)
         view.addSubview(passwordTextField)
         view.addSubview(loginButton)
-        
+
+        presenter.delegate = self
+
+
         // Bind the view (self) to the presenter
         presenter.bind(displayer: self)
         setupConstraints()
-//        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
-        
-        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
-
     }
 
     // MARK: - Actions
     @objc
-        func loginButtonTapped() {
+    func loginButtonTapped() {
         guard let email = emailTextField.text, !email.isEmpty,
               let password = passwordTextField.text, !password.isEmpty else {
             return
@@ -72,35 +75,26 @@ class LoginViewController: UIViewController {
 
         let loginModel = LoginModel(email: email, password: password)
         presenter.didTapLogin(with: loginModel)
-/*
-         presenter.didTapLogin(with: loginModel) { [weak self] result in
-            switch result {
-            case .success(let message):
-                // Handle successful login by navigating to the HomeViewController on the main thread
-                DispatchQueue.main.async {
-                    let homeViewController = HomeViewController()
-                    homeViewController.welcomeMessage = message
-
-                    // Push the HomeViewController onto the navigation stack
-                    self?.navigationController?.pushViewController(homeViewController, animated: true)
-                }
-
-            case .failure(let error):
-                DispatchQueue.main.async {
-                    print("Login error: \(error.localizedDescription)")
-                }
-            }
-        }  */
     }
 
 
 }
 
-extension LoginViewController: LoginDisplayer {
-    func show(viewController: UIViewController) {
+
+extension LoginViewController: LoginPresenterDelegate {
+    // Implement the delegate methods for successful and failed logins
+    func loginSuccessful(with message: String) {
+        print("login successful")
+
+        DispatchQueue.main.async {
+            let homeViewController = HomeViewController()
+            homeViewController.welcomeMessage = message
+            self.navigationController?.pushViewController(homeViewController, animated: true)
+        }
     }
-    
-    func setup() {
-        // Implement any setup logic here if needed
+
+    func loginFailed(with error: Error) {
+        // Handle login failure, e.g., display an alert
+        print("Login error: \(error.localizedDescription)")
     }
 }
