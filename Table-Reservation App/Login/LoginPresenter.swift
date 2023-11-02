@@ -71,7 +71,7 @@ class LoginPresenterImpl: LoginPresenter {
                 // Parse the JSON response
                 let responseJSON = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
                 if let token = responseJSON?["jwt"] as? String {
-                    delegate?.loginSuccessful(with: token)
+                    delegate?.loginSuccessful()
                 } else if let errorMessage = responseJSON?["jwt"] as? String {
                     let error = NSError(domain: "LoginErrorDomain", code: 401, userInfo: [NSLocalizedDescriptionKey: errorMessage])
                     delegate?.loginFailed(with: error)

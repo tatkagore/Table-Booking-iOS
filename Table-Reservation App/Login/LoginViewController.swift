@@ -8,11 +8,12 @@ import UIKit
 
 // Protocol to define methods for displaying the login interface
 protocol LoginDisplayer: AnyObject {
+    // display errors during login
 }
 
 // Protocol to define methods for handling login-related events
 protocol LoginPresenterDelegate: AnyObject {
-    func loginSuccessful(with token: String)
+    func loginSuccessful()
     func loginFailed(with error: Error)
 }
 
@@ -20,30 +21,66 @@ class LoginViewController: UIViewController, LoginDisplayer {
 
     // MARK: - Properties
 
-    let emailTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Email"
-        textField.borderStyle = .roundedRect
+    let welcomeBackLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Welcome back!"
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 24)
+        label.textColor = UIColor.myBlue
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    let logInLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Login to your account"
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 16, weight: .light) // Use a lighter font
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    let usernameTextField: StyledTextField = {
+        let textField = StyledTextField()
+        textField.placeholder = "Username"
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
 
-    let passwordTextField: UITextField = {
-        let textField = UITextField()
+    let passwordTextField: StyledTextField = {
+        let textField = StyledTextField()
         textField.placeholder = "Password"
-        textField.borderStyle = .roundedRect
         textField.isSecureTextEntry = true
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
 
-    let loginButton: UIButton = {
-        let button = UIButton(type: .system)
+    let loginButton: StyledButton = {
+        let button = StyledButton(type: .system)
         button.setTitle("Login", for: .normal)
-        button.addTarget(LoginViewController.self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+
+    let dontHaveAccountLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Don't have an account?"
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    let signUpButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Sign Up", for: .normal)
+        button.setTitleColor(UIColor.myBlue, for: .normal)
+        button.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
+
 
     var presenter: LoginPresenter = LoginPresenterImpl()
 
@@ -52,10 +89,13 @@ class LoginViewController: UIViewController, LoginDisplayer {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-
-        view.addSubview(emailTextField)
+        view.addSubview(logInLabel)
+        view.addSubview(welcomeBackLabel)
+        view.addSubview(usernameTextField)
         view.addSubview(passwordTextField)
         view.addSubview(loginButton)
+        view.addSubview(dontHaveAccountLabel)
+        view.addSubview(signUpButton)
 
         presenter.delegate = self
 
@@ -68,7 +108,7 @@ class LoginViewController: UIViewController, LoginDisplayer {
     // MARK: - Actions
     @objc
     func loginButtonTapped() {
-        guard let email = emailTextField.text, !email.isEmpty,
+        guard let email = usernameTextField.text, !email.isEmpty,
               let password = passwordTextField.text, !password.isEmpty else {
             return
         }
@@ -76,19 +116,22 @@ class LoginViewController: UIViewController, LoginDisplayer {
         let loginModel = LoginModel(email: email, password: password)
         presenter.didTapLogin(with: loginModel)
     }
+    @objc
+    func signUpButtonTapped() {
+        let signUpViewController = SignUpViewController()
+        self.navigationController?.pushViewController(signUpViewController, animated: true)
+    }
 
 
 }
 
 
 extension LoginViewController: LoginPresenterDelegate {
-    // Implement the delegate methods for successful and failed logins
-    func loginSuccessful(with message: String) {
+    func loginSuccessful() {
         print("login successful")
 
         DispatchQueue.main.async {
             let homeViewController = HomeViewController()
-            homeViewController.welcomeMessage = message
             self.navigationController?.pushViewController(homeViewController, animated: true)
         }
     }

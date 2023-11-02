@@ -19,12 +19,21 @@ class StyledButton: UIButton {
     }
 
     private func setStyle() {
+
         self.setTitleColor(.white, for: .normal)
-        self.backgroundColor = UIColor(hex: "E9C46A") // Set background color to #E9C46A
-        self.layer.cornerRadius = 10.0 // Add rounded corners with a radius of 10
-        self.layer.borderColor = UIColor(hex: "F4A261").cgColor // Set border color to #F4A261
-        self.layer.borderWidth = 2.0 // Increase border width
+        self.backgroundColor = UIColor(hex: "0077B6") // Set background color to #E9C46A
+        self.layer.cornerRadius = 5.0 // Add rounded corners with a radius of 10
+        self.layer.borderColor = UIColor(hex: "0077B6").cgColor // Set border color to #F4A261
+        self.layer.borderWidth = 1.0 // Increase border width
         self.titleLabel?.font = UIFont(name: "Print Clearly", size: 30)
+        self.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
+
+        // Add shadow
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = CGSize(width: 0, height: 3) // Adjust shadow offset as needed
+        self.layer.shadowOpacity = 0.5 // Adjust shadow opacity as needed
+        self.layer.shadowRadius = 3.0 // Adjust shadow radius as needed
+        self.layer.masksToBounds = false
     }
 }
 
