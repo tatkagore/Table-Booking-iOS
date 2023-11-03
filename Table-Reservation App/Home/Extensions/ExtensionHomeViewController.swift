@@ -17,7 +17,7 @@ extension HomeViewController {
                    logOutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
                    logOutButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
                    logOutButton.widthAnchor.constraint(equalToConstant: 280), // Adjust the width as needed
-                   logOutButton.heightAnchor.constraint(equalToConstant: 60)  // Adjust the height as needed
+                   logOutButton.heightAnchor.constraint(equalToConstant: 40)  // Adjust the height as needed
 
                ])
     }

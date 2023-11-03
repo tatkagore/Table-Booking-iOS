@@ -36,16 +36,6 @@ extension SignUpViewController {
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
 
-
-            // Add constraints for individual text fields with a height of 60 points
-            firstNameTextField.heightAnchor.constraint(equalToConstant: 60),
-            lastNameTextField.heightAnchor.constraint(equalToConstant: 60),
-            emailTextField.heightAnchor.constraint(equalToConstant: 60),
-            passwordTextField.heightAnchor.constraint(equalToConstant: 60),
-            phoneNumberTextField.heightAnchor.constraint(equalToConstant: 60),
-            createAccountButton.heightAnchor.constraint(equalToConstant: 60),
-
-
             // Add the horizontal stackView for "Don't have an account? Sign up" label and "SignUp" button
             stackViewHorizontal.topAnchor.constraint(equalTo: createAccountButton.bottomAnchor, constant: 20),
             stackViewHorizontal.centerXAnchor.constraint(equalTo: view.centerXAnchor)

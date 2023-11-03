@@ -35,7 +35,7 @@ class LoginViewController: UIViewController, LoginDisplayer {
         let label = UILabel()
         label.text = "Login to your account"
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 16, weight: .light) // Use a lighter font
+        label.font = UIFont.systemFont(ofSize: 16, weight: .light)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -70,7 +70,7 @@ class LoginViewController: UIViewController, LoginDisplayer {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
+    // Button to SignUp view
     let signUpButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Sign Up", for: .normal)
@@ -79,8 +79,6 @@ class LoginViewController: UIViewController, LoginDisplayer {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-
-
 
     var presenter: LoginPresenter = LoginPresenterImpl()
 

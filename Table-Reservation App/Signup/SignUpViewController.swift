@@ -5,11 +5,23 @@
 //  Created by Tatiana Simmer on 02/11/2023.
 //
 
-import Foundation
-
 import UIKit
 
-class SignUpViewController: UIViewController {
+
+// Protocol to define methods for displaying the signUp interface
+protocol SignUpDisplayer: AnyObject {
+    // display errors during login
+}
+// Protocol to define methods for handling signUp-related events
+protocol SignUpPresenterDelegate: AnyObject {
+    func signUpSuccessful()
+    func signUpFailed(with error: Error)
+}
+
+
+class SignUpViewController: UIViewController, SignUpDisplayer {
+
+    // MARK: - Properties
 
     let firstNameTextField: StyledTextField = {
         let textField = StyledTextField()
@@ -72,6 +84,10 @@ class SignUpViewController: UIViewController {
         return button
     }()
 
+    var presenter: SignUpPresenter = SignUpPresenterImpl()
+
+
+    // MARK: - View Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,7 +95,7 @@ class SignUpViewController: UIViewController {
         title = "Create an account"
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-    
+
         view.backgroundColor = .systemBackground
         view.addSubview(firstNameTextField)
         view.addSubview(lastNameTextField)
@@ -87,7 +103,11 @@ class SignUpViewController: UIViewController {
         view.addSubview(passwordTextField)
         view.addSubview(phoneNumberTextField)
         view.addSubview(createAccountButton)
-         setUpConstraints()
+
+
+        presenter.delegate = self
+        presenter.bind(displayer: self)
+        setUpConstraints()
 
     }
 
@@ -96,6 +116,15 @@ class SignUpViewController: UIViewController {
     @objc
     func createAccountButtonTapper() {
         print("CREATED Account")
+        guard let email = emailTextField.text, !email.isEmpty,
+              let password = passwordTextField.text, !password.isEmpty,
+              let firstName = firstNameTextField.text, !firstName.isEmpty,
+              let lastName = lastNameTextField.text, !lastName.isEmpty,
+              let phoneNumber = phoneNumberTextField.text, !lastName.isEmpty else {
+            return
+        }
+        let signUpModel = SignUpModel(firstName: firstName, lastName: lastName, email: email, password: password, phoneNumber: phoneNumber)
+        presenter.didTapSignUp(with: signUpModel)
     }
 
     @objc
@@ -105,8 +134,19 @@ class SignUpViewController: UIViewController {
 }
 
 
+extension SignUpViewController: SignUpPresenterDelegate {
+
+    func signUpSuccessful() {
+        print("signUpSuccessful")
+        DispatchQueue.main.async {
+                 let homeViewController = HomeViewController()
+                 self.navigationController?.pushViewController(homeViewController, animated: true)
+             }
+    }
 
 
-
-// Hiding the existing back button
-
+    func signUpFailed(with error: Error) {
+        // Handle login failure, e.g., display an alert
+        print("Login error: \(error.localizedDescription)")
+    }
+}

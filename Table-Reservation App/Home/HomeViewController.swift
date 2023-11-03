@@ -22,7 +22,7 @@ class HomeViewController: UIViewController {
         view.backgroundColor = .systemBackground
         // Hiding the existing back button
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        title = "Home screen"
+        title = "Hello, Tatiana"
         navigationController?.navigationBar.prefersLargeTitles = true
         view.addSubview(logOutButton)
         setUpConstraints()

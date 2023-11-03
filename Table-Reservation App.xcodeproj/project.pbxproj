@@ -14,6 +14,8 @@
 		FE6754222ADEAC9D0079C15E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE6754212ADEAC9D0079C15E /* Assets.xcassets */; };
 		FE6754252ADEAC9D0079C15E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE6754232ADEAC9D0079C15E /* LaunchScreen.storyboard */; };
 		FE89377E2AF3F479001FDD6F /* ExtensionHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE89377D2AF3F479001FDD6F /* ExtensionHomeViewController.swift */; };
+		FE8937802AF41501001FDD6F /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE89377F2AF41501001FDD6F /* SignUpPresenter.swift */; };
+		FE8937822AF41542001FDD6F /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8937812AF41542001FDD6F /* SignUpModel.swift */; };
 		FE9A79A72ADECE5F00946AA7 /* StyledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9A79A62ADECE5F00946AA7 /* StyledButton.swift */; };
 		FE9A79A92ADECF5900946AA7 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9A79A82ADECF5900946AA7 /* UserModel.swift */; };
 		FE9A79B92AE12A5D00946AA7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9A79B82AE12A5D00946AA7 /* LoginViewController.swift */; };
@@ -36,6 +38,8 @@
 		FE6754242ADEAC9D0079C15E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FE6754262ADEAC9D0079C15E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE89377D2AF3F479001FDD6F /* ExtensionHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionHomeViewController.swift; sourceTree = "<group>"; };
+		FE89377F2AF41501001FDD6F /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
+		FE8937812AF41542001FDD6F /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		FE9A79A62ADECE5F00946AA7 /* StyledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledButton.swift; sourceTree = "<group>"; };
 		FE9A79A82ADECF5900946AA7 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		FE9A79B82AE12A5D00946AA7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -159,6 +163,8 @@
 			isa = PBXGroup;
 			children = (
 				FEEBEBC82AF3E43800BA226E /* SignUpViewController.swift */,
+				FE89377F2AF41501001FDD6F /* SignUpPresenter.swift */,
+				FE8937812AF41542001FDD6F /* SignUpModel.swift */,
 				FEEBEBCA2AF3E59400BA226E /* Extensions */,
 			);
 			path = Signup;
@@ -244,6 +250,7 @@
 			files = (
 				FE9A79BB2AE12A7C00946AA7 /* LoginPresenter.swift in Sources */,
 				FE9A79C12AE12E1500946AA7 /* UserPresenter.swift in Sources */,
+				FE8937822AF41542001FDD6F /* SignUpModel.swift in Sources */,
 				FE6754192ADEAC9C0079C15E /* AppDelegate.swift in Sources */,
 				FE9A79A92ADECF5900946AA7 /* UserModel.swift in Sources */,
 				FE9A79A72ADECE5F00946AA7 /* StyledButton.swift in Sources */,
@@ -256,6 +263,7 @@
 				FEEBEBC62AF3D84700BA226E /* StyledTextField.swift in Sources */,
 				FEEBEBC92AF3E43800BA226E /* SignUpViewController.swift in Sources */,
 				FE9A79B92AE12A5D00946AA7 /* LoginViewController.swift in Sources */,
+				FE8937802AF41501001FDD6F /* SignUpPresenter.swift in Sources */,
 				FEEBEBCC2AF3E5C000BA226E /* ExtensionSignUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
