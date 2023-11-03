@@ -29,11 +29,11 @@ extension LoginViewController {
             logInLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             logInLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
-            usernameTextField.topAnchor.constraint(equalTo: logInLabel.bottomAnchor, constant: 20), // Adjust the constant to add space
-            usernameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            usernameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            emailTextField.topAnchor.constraint(equalTo: logInLabel.bottomAnchor, constant: 20), // Adjust the constant to add space
+            emailTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            emailTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
-            passwordTextField.topAnchor.constraint(equalTo: usernameTextField.bottomAnchor, constant: 20),
+            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 20),
             passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             

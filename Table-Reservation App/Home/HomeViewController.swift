@@ -22,7 +22,7 @@ class HomeViewController: UIViewController {
         view.backgroundColor = .systemBackground
         // Hiding the existing back button
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        title = "Hello, Tatiana"
+        title = "Hello, User"
         navigationController?.navigationBar.prefersLargeTitles = true
         view.addSubview(logOutButton)
         setUpConstraints()
@@ -31,6 +31,10 @@ class HomeViewController: UIViewController {
 
     @objc
     func logOutButtonTapped() {
-        self.navigationController?.popViewController(animated: true)
+        let authManager = KeychainHelper()
+        try authManager.logout()
+        // Log success
+        print("Token deleted from Keychain")
+        self.navigationController?.pushViewController(LoginViewController(), animated: true)
     }
 }

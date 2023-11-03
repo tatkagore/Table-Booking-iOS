@@ -7,12 +7,11 @@
 
 import Foundation
 
-struct User: Codable {
-    var id: String? = nil
-    var name: String
-    var phone: String
-    init(name: String, phone: String){
-        self.name = name
-        self.phone = phone
-    }
+struct User {
+    var isAdmin: Bool
+    var firstName: String
+    var lastName: String
+    var email: String
+    var  phoneNumber: String
+    var password: String
 }

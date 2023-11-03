@@ -10,22 +10,30 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    
+
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-            guard let windowScene = (scene as? UIWindowScene) else { return }
-            let window = UIWindow(windowScene: windowScene)
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        let window = UIWindow(windowScene: windowScene)
 
-            // Create an instance of the LoginViewController as the initial view controller
-            let loginViewController = LoginViewController()
+        let navigationController = UINavigationController()
+
+        // Check for the presence of a saved token
+        let authManager = KeychainHelper()
         
-//          let homeVC = HomeViewController()
-            let navigationController = UINavigationController(rootViewController: loginViewController) // Embed in a UINavigationController
-
-            window.rootViewController = navigationController
-
-            self.window = window
-            self.window?.makeKeyAndVisible()
+        if let savedToken = authManager.getTokenFromKeychain() {
+            // Token exists, user is authenticated
+            let homeViewController = HomeViewController()
+            navigationController.setViewControllers([homeViewController], animated: false)
+        } else {
+            // Token doesn't exist, show login screen
+            let loginViewController = LoginViewController()
+            navigationController.setViewControllers([loginViewController], animated: false)
         }
+
+        window.rootViewController = navigationController
+        self.window = window
+        self.window?.makeKeyAndVisible()
+    }
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

@@ -4,6 +4,7 @@
 //
 //  Created by Tatiana Simmer on 19/10/2023.
 //
+
 import UIKit
 
 // Protocol to define methods for displaying the login interface
@@ -13,7 +14,7 @@ protocol LoginDisplayer: AnyObject {
 
 // Protocol to define methods for handling login-related events
 protocol LoginPresenterDelegate: AnyObject {
-    func loginSuccessful()
+    func loginSuccessful(withAuthToken authToken: String)
     func loginFailed(with error: Error)
 }
 
@@ -40,10 +41,11 @@ class LoginViewController: UIViewController, LoginDisplayer {
         return label
     }()
 
-    let usernameTextField: StyledTextField = {
+    let emailTextField: StyledTextField = {
         let textField = StyledTextField()
-        textField.placeholder = "Username"
+        textField.placeholder = "Email"
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.autocapitalizationType = .none
         return textField
     }()
 
@@ -52,6 +54,7 @@ class LoginViewController: UIViewController, LoginDisplayer {
         textField.placeholder = "Password"
         textField.isSecureTextEntry = true
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.autocapitalizationType = .none
         return textField
     }()
 
@@ -89,7 +92,7 @@ class LoginViewController: UIViewController, LoginDisplayer {
         view.backgroundColor = .white
         view.addSubview(logInLabel)
         view.addSubview(welcomeBackLabel)
-        view.addSubview(usernameTextField)
+        view.addSubview(emailTextField)
         view.addSubview(passwordTextField)
         view.addSubview(loginButton)
         view.addSubview(dontHaveAccountLabel)
@@ -106,7 +109,7 @@ class LoginViewController: UIViewController, LoginDisplayer {
     // MARK: - Actions
     @objc
     func loginButtonTapped() {
-        guard let email = usernameTextField.text, !email.isEmpty,
+        guard let email = emailTextField.text, !email.isEmpty,
               let password = passwordTextField.text, !password.isEmpty else {
             return
         }
@@ -125,15 +128,22 @@ class LoginViewController: UIViewController, LoginDisplayer {
 
 
 extension LoginViewController: LoginPresenterDelegate {
-    func loginSuccessful() {
-        print("login successful")
 
+    func loginSuccessful(withAuthToken authToken: String) {
+        let authManager = KeychainHelper()
+        do {
+            try authManager.saveTokenToKeychain(token: authToken)
+            // Log success
+            print("Token saved to Keychain")
+        } catch {
+            // Handle the error if saving the token fails
+            print("Error saving token to Keychain: \(error.localizedDescription)")
+        }
         DispatchQueue.main.async {
             let homeViewController = HomeViewController()
             self.navigationController?.pushViewController(homeViewController, animated: true)
         }
     }
-
     func loginFailed(with error: Error) {
         // Handle login failure, e.g., display an alert
         print("Login error: \(error.localizedDescription)")

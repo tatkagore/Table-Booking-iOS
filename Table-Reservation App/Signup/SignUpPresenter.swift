@@ -23,9 +23,9 @@ class SignUpPresenterImpl: SignUpPresenter {
     func bind(displayer: SignUpDisplayer) {
         self.displayer = displayer
     }
-    
+
     func didTapSignUp(with model: SignUpModel) {
-        
+
         // Construct a URL for the login endpoint
 
         guard let url = URL(string: "http://localhost:3000/auth/signup") else {
@@ -76,9 +76,9 @@ class SignUpPresenterImpl: SignUpPresenter {
             do {
                 // Parse the JSON response
                 let responseJSON = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-                if let token = responseJSON?["message"] as? String {
-                    delegate?.signUpSuccessful()
-                } else if let errorMessage = responseJSON?["message"] as? String {
+                if let authToken = responseJSON?["jwt"] as? String {
+                    delegate?.signUpSuccessful(withAuthToken: authToken)
+                } else if let errorMessage = responseJSON?["jwt"] as? String {
                     let error = NSError(domain: "LoginErrorDomain", code: 401, userInfo: [NSLocalizedDescriptionKey: errorMessage])
                     delegate?.signUpFailed(with: error)
                 } else {
@@ -92,8 +92,6 @@ class SignUpPresenterImpl: SignUpPresenter {
 
         task.resume()
     }
-
-
 
 }
 
