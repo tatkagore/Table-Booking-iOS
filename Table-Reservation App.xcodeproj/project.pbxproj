@@ -18,6 +18,8 @@
 		FE8937822AF41542001FDD6F /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8937812AF41542001FDD6F /* SignUpModel.swift */; };
 		FE8F2B3A2AF4F25B00438ACA /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8F2B392AF4F25B00438ACA /* KeychainHelper.swift */; };
 		FE8F2B3D2AF53BCE00438ACA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE8F2B3C2AF53BCE00438ACA /* Security.framework */; };
+		FE8F2B412AFA2D6B00438ACA /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8F2B402AFA2D6B00438ACA /* HomePresenter.swift */; };
+		FE8F2B432AFAA27300438ACA /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8F2B422AFAA27300438ACA /* ErrorMessage.swift */; };
 		FE9A79A72ADECE5F00946AA7 /* StyledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9A79A62ADECE5F00946AA7 /* StyledButton.swift */; };
 		FE9A79A92ADECF5900946AA7 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9A79A82ADECF5900946AA7 /* UserModel.swift */; };
 		FE9A79B92AE12A5D00946AA7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9A79B82AE12A5D00946AA7 /* LoginViewController.swift */; };
@@ -44,6 +46,8 @@
 		FE8937812AF41542001FDD6F /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		FE8F2B392AF4F25B00438ACA /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		FE8F2B3C2AF53BCE00438ACA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		FE8F2B402AFA2D6B00438ACA /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		FE8F2B422AFAA27300438ACA /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		FE9A79A62ADECE5F00946AA7 /* StyledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledButton.swift; sourceTree = "<group>"; };
 		FE9A79A82ADECF5900946AA7 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		FE9A79B82AE12A5D00946AA7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +147,7 @@
 		FE89377C2AF3F44F001FDD6F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				FE8F2B422AFAA27300438ACA /* ErrorMessage.swift */,
 				FE89377D2AF3F479001FDD6F /* ExtensionHomeViewController.swift */,
 			);
 			path = Extensions;
@@ -177,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				7B0CE8642AE2847900B2736D /* HomeViewController.swift */,
+				FE8F2B402AFA2D6B00438ACA /* HomePresenter.swift */,
 				FE89377C2AF3F44F001FDD6F /* Extensions */,
 			);
 			path = Home;
@@ -279,12 +285,14 @@
 				FE9A79A92ADECF5900946AA7 /* UserModel.swift in Sources */,
 				FE9A79A72ADECE5F00946AA7 /* StyledButton.swift in Sources */,
 				FE89377E2AF3F479001FDD6F /* ExtensionHomeViewController.swift in Sources */,
+				FE8F2B432AFAA27300438ACA /* ErrorMessage.swift in Sources */,
 				FE9A79BD2AE12DAF00946AA7 /* LoginModel.swift in Sources */,
 				FE9A79BF2AE12DF800946AA7 /* UserViewController.swift in Sources */,
 				7B0CE8652AE2847900B2736D /* HomeViewController.swift in Sources */,
 				FE67541B2ADEAC9C0079C15E /* SceneDelegate.swift in Sources */,
 				7B0CE8682AE2A5D100B2736D /* ExtensionLoginViewController.swift in Sources */,
 				FEEBEBC62AF3D84700BA226E /* StyledTextField.swift in Sources */,
+				FE8F2B412AFA2D6B00438ACA /* HomePresenter.swift in Sources */,
 				FEEBEBC92AF3E43800BA226E /* SignUpViewController.swift in Sources */,
 				FE9A79B92AE12A5D00946AA7 /* LoginViewController.swift in Sources */,
 				FE8937802AF41501001FDD6F /* SignUpPresenter.swift in Sources */,

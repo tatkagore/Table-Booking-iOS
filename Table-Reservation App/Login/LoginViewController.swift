@@ -89,6 +89,8 @@ class LoginViewController: UIViewController, LoginDisplayer {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+
         view.backgroundColor = .white
         view.addSubview(logInLabel)
         view.addSubview(welcomeBackLabel)
