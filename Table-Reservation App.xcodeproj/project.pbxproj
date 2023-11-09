@@ -26,7 +26,7 @@
 		FE9A79B92AE12A5D00946AA7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9A79B82AE12A5D00946AA7 /* LoginViewController.swift */; };
 		FE9A79BB2AE12A7C00946AA7 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9A79BA2AE12A7C00946AA7 /* LoginPresenter.swift */; };
 		FE9A79BD2AE12DAF00946AA7 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9A79BC2AE12DAF00946AA7 /* LoginModel.swift */; };
-		FE9A79BF2AE12DF800946AA7 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9A79BE2AE12DF800946AA7 /* UserViewController.swift */; };
+		FE9A79BF2AE12DF800946AA7 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9A79BE2AE12DF800946AA7 /* UserProfileViewController.swift */; };
 		FE9A79C12AE12E1500946AA7 /* UserPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9A79C02AE12E1500946AA7 /* UserPresenter.swift */; };
 		FEEBEBC62AF3D84700BA226E /* StyledTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEBEBC52AF3D84700BA226E /* StyledTextField.swift */; };
 		FEEBEBC92AF3E43800BA226E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEBEBC82AF3E43800BA226E /* SignUpViewController.swift */; };
@@ -55,7 +55,7 @@
 		FE9A79B82AE12A5D00946AA7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FE9A79BA2AE12A7C00946AA7 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		FE9A79BC2AE12DAF00946AA7 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
-		FE9A79BE2AE12DF800946AA7 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		FE9A79BE2AE12DF800946AA7 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		FE9A79C02AE12E1500946AA7 /* UserPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPresenter.swift; sourceTree = "<group>"; };
 		FEEBEBC52AF3D84700BA226E /* StyledTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledTextField.swift; sourceTree = "<group>"; };
 		FEEBEBC82AF3E43800BA226E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -139,10 +139,10 @@
 		FE67542E2ADEB6AC0079C15E /* User */ = {
 			isa = PBXGroup;
 			children = (
-				FE8F4CF52AFBDB1F0030DF41 /* Extensions */,
-				FE9A79BE2AE12DF800946AA7 /* UserViewController.swift */,
+				FE9A79BE2AE12DF800946AA7 /* UserProfileViewController.swift */,
 				FE9A79C02AE12E1500946AA7 /* UserPresenter.swift */,
 				FE9A79A82ADECF5900946AA7 /* UserModel.swift */,
+				FE8F4CF52AFBDB1F0030DF41 /* Extensions */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -298,7 +298,7 @@
 				FE89377E2AF3F479001FDD6F /* ExtensionHomeViewController.swift in Sources */,
 				FE8F2B432AFAA27300438ACA /* ErrorMessage.swift in Sources */,
 				FE9A79BD2AE12DAF00946AA7 /* LoginModel.swift in Sources */,
-				FE9A79BF2AE12DF800946AA7 /* UserViewController.swift in Sources */,
+				FE9A79BF2AE12DF800946AA7 /* UserProfileViewController.swift in Sources */,
 				7B0CE8652AE2847900B2736D /* HomeViewController.swift in Sources */,
 				FE67541B2ADEAC9C0079C15E /* SceneDelegate.swift in Sources */,
 				7B0CE8682AE2A5D100B2736D /* ExtensionLoginViewController.swift in Sources */,

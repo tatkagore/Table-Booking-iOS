@@ -16,6 +16,10 @@ protocol HomePresenterDelegate: AnyObject {
 }
 
 class HomeViewController: UIViewController, HomePresenterDelegate {
+
+    var presenter: HomePresenter = HomePresenterImpl()
+    var user: UserModel?
+
     var helloUserNameLabel: UILabel = {
         let label = UILabel()
         label.text = "Welcome"
@@ -25,15 +29,7 @@ class HomeViewController: UIViewController, HomePresenterDelegate {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    var presenter: HomePresenter = HomePresenterImpl()
-    var user: UserModel?
-    let logOutButton: StyledButton = {
-        let button = StyledButton(type: .system)
-        button.setTitle("Log Out", for: .normal)
-        button.addTarget(self, action: #selector(logOutButtonTapped), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
+
     var userProfileButton: profileButton = {
         let button = profileButton()
         // Set the image for the button
@@ -44,13 +40,13 @@ class HomeViewController: UIViewController, HomePresenterDelegate {
         return button
     }()
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         view.backgroundColor = .systemBackground
         title = "Book a table" // Initialize the title
         navigationController?.navigationBar.prefersLargeTitles = false
-        view.addSubview(logOutButton)
         view.addSubview(helloUserNameLabel)
         view.addSubview(userProfileButton)
         presenter.bind(displayer: self)
@@ -58,23 +54,10 @@ class HomeViewController: UIViewController, HomePresenterDelegate {
         presenter.onViewDidLoad()
     }
 
-    @objc
-    func logOutButtonTapped() {
-        let authManager = KeychainHelper()
-        do {
-            try authManager.logout()
-            // Log success
-            print("Token deleted from Keychain")
-            self.navigationController?.pushViewController(LoginViewController(), animated: true)
-        } catch {
-            // Handle the error if logging out fails
-            print("Error logging out: \(error.localizedDescription)")
-        }
-    }
-
     @objc func userProfileButtonTapped() {
-        let userProfileViewController = UserViewController()
-        navigationController?.pushViewController(UserViewController(), animated: true)
+        let userProfileViewController = UserProfileViewController()
+        userProfileViewController.user = user
+        navigationController?.pushViewController(userProfileViewController, animated: true)
     }
 }
 

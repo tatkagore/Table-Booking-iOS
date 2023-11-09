@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-extension UserViewController {
+extension UserProfileViewController {
     // MARK: - Auto Layout
 
     func setUpConstraints() {
@@ -18,7 +18,15 @@ extension UserViewController {
         stackView.spacing = 20
         stackView.translatesAutoresizingMaskIntoConstraints = false
 
+        let bottomStackView = UIStackView(arrangedSubviews: [logOutButton])
+        bottomStackView.axis = .vertical
+        bottomStackView.spacing = 20
+        bottomStackView.translatesAutoresizingMaskIntoConstraints = false
+
+        view.addSubview(bottomStackView)
         view.addSubview(stackView)
+        view.addSubview(serverResponceLabel)
+
 
         NSLayoutConstraint.activate([
             // Center the stack view vertically
@@ -26,7 +34,17 @@ extension UserViewController {
             // Center the stack view horizontally
             stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+
+            serverResponceLabel.topAnchor.constraint(equalTo: updateAccountButton.bottomAnchor, constant: 16),
+            serverResponceLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+
+            // Center the stack view horizontally
+            bottomStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            bottomStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            bottomStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            bottomStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20)
+
         ])
     }
 }

@@ -10,7 +10,7 @@ import UIKit
 
 // Protocol to define methods for displaying the signUp interface
 protocol SignUpDisplayer: AnyObject {
-    // display errors during login
+    // display errors during sign up
 }
 // Protocol to define methods for handling signUp-related events
 protocol SignUpPresenterDelegate: AnyObject {
@@ -119,7 +119,6 @@ class SignUpViewController: UIViewController, SignUpDisplayer {
     
     @objc
     func createAccountButtonTapper() {
-        print("CREATED Account")
         guard let email = emailTextField.text, !email.isEmpty,
               let password = passwordTextField.text, !password.isEmpty,
               let firstName = firstNameTextField.text, !firstName.isEmpty,
