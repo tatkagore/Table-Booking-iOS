@@ -20,6 +20,7 @@
 		FE8F2B3D2AF53BCE00438ACA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE8F2B3C2AF53BCE00438ACA /* Security.framework */; };
 		FE8F2B412AFA2D6B00438ACA /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8F2B402AFA2D6B00438ACA /* HomePresenter.swift */; };
 		FE8F2B432AFAA27300438ACA /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8F2B422AFAA27300438ACA /* ErrorMessage.swift */; };
+		FE8F4CF72AFBDB4D0030DF41 /* UserViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8F4CF62AFBDB4D0030DF41 /* UserViewControllerExtensions.swift */; };
 		FE9A79A72ADECE5F00946AA7 /* StyledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9A79A62ADECE5F00946AA7 /* StyledButton.swift */; };
 		FE9A79A92ADECF5900946AA7 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9A79A82ADECF5900946AA7 /* UserModel.swift */; };
 		FE9A79B92AE12A5D00946AA7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9A79B82AE12A5D00946AA7 /* LoginViewController.swift */; };
@@ -48,6 +49,7 @@
 		FE8F2B3C2AF53BCE00438ACA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		FE8F2B402AFA2D6B00438ACA /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		FE8F2B422AFAA27300438ACA /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
+		FE8F4CF62AFBDB4D0030DF41 /* UserViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewControllerExtensions.swift; sourceTree = "<group>"; };
 		FE9A79A62ADECE5F00946AA7 /* StyledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledButton.swift; sourceTree = "<group>"; };
 		FE9A79A82ADECF5900946AA7 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		FE9A79B82AE12A5D00946AA7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 		FE67542E2ADEB6AC0079C15E /* User */ = {
 			isa = PBXGroup;
 			children = (
+				FE8F4CF52AFBDB1F0030DF41 /* Extensions */,
 				FE9A79BE2AE12DF800946AA7 /* UserViewController.swift */,
 				FE9A79C02AE12E1500946AA7 /* UserPresenter.swift */,
 				FE9A79A82ADECF5900946AA7 /* UserModel.swift */,
@@ -147,8 +150,8 @@
 		FE89377C2AF3F44F001FDD6F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				FE8F2B422AFAA27300438ACA /* ErrorMessage.swift */,
 				FE89377D2AF3F479001FDD6F /* ExtensionHomeViewController.swift */,
+				FE8F2B422AFAA27300438ACA /* ErrorMessage.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -167,6 +170,14 @@
 				FE8F2B3C2AF53BCE00438ACA /* Security.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FE8F4CF52AFBDB1F0030DF41 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FE8F4CF62AFBDB4D0030DF41 /* UserViewControllerExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		FE9A79A42ADECE2700946AA7 /* UIElements */ = {
@@ -295,6 +306,7 @@
 				FE8F2B412AFA2D6B00438ACA /* HomePresenter.swift in Sources */,
 				FEEBEBC92AF3E43800BA226E /* SignUpViewController.swift in Sources */,
 				FE9A79B92AE12A5D00946AA7 /* LoginViewController.swift in Sources */,
+				FE8F4CF72AFBDB4D0030DF41 /* UserViewControllerExtensions.swift in Sources */,
 				FE8937802AF41501001FDD6F /* SignUpPresenter.swift in Sources */,
 				FEEBEBCC2AF3E5C000BA226E /* ExtensionSignUpViewController.swift in Sources */,
 			);

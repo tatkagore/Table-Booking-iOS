@@ -40,7 +40,6 @@ extension SignUpViewController {
             stackViewHorizontal.topAnchor.constraint(equalTo: createAccountButton.bottomAnchor, constant: 20),
             stackViewHorizontal.centerXAnchor.constraint(equalTo: view.centerXAnchor)
 
-
         ])
     }
 }

@@ -16,6 +16,16 @@ protocol HomePresenterDelegate: AnyObject {
 }
 
 class HomeViewController: UIViewController, HomePresenterDelegate {
+    var helloUserNameLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Welcome"
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 30)
+        label.textColor = UIColor.myBlue
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    var presenter: HomePresenter = HomePresenterImpl()
     var user: UserModel?
     let logOutButton: StyledButton = {
         let button = StyledButton(type: .system)
@@ -24,15 +34,25 @@ class HomeViewController: UIViewController, HomePresenterDelegate {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    var presenter: HomePresenter = HomePresenterImpl()
+    var userProfileButton: profileButton = {
+        let button = profileButton()
+        // Set the image for the button
+        let buttonImage = UIImage(named: "avatar")
+        button.setImage(buttonImage, for: .normal)
+        button.addTarget(self, action: #selector(userProfileButtonTapped), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         view.backgroundColor = .systemBackground
-        title = "Hello, " // Initialize the title
-        navigationController?.navigationBar.prefersLargeTitles = true
+        title = "Book a table" // Initialize the title
+        navigationController?.navigationBar.prefersLargeTitles = false
         view.addSubview(logOutButton)
+        view.addSubview(helloUserNameLabel)
+        view.addSubview(userProfileButton)
         presenter.bind(displayer: self)
         setUpConstraints()
         presenter.onViewDidLoad()
@@ -51,6 +71,11 @@ class HomeViewController: UIViewController, HomePresenterDelegate {
             print("Error logging out: \(error.localizedDescription)")
         }
     }
+
+    @objc func userProfileButtonTapped() {
+        let userProfileViewController = UserViewController()
+        navigationController?.pushViewController(UserViewController(), animated: true)
+    }
 }
 
 extension HomeViewController: HomeDisplayer {
@@ -58,13 +83,13 @@ extension HomeViewController: HomeDisplayer {
         print("User data fetching error: \(error.localizedDescription)")
 
     }
-    
+
     func showUser(_ user: UserModel) {
         // Update the UI on the main thread
         DispatchQueue.main.async { [weak self] in
             self?.user = user
             if let firstName = user.firstName {
-                self?.title = "Hello, \(firstName)"
+                self?.helloUserNameLabel.text = "Welcome, \(firstName)"
             }
         }
     }
