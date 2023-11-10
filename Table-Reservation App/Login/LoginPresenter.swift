@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 // Protocol to define methods for the presenter
 protocol LoginPresenter {
@@ -15,8 +16,13 @@ protocol LoginPresenter {
 }
 
 class LoginPresenterImpl: LoginPresenter {
+    let navigationController: UINavigationController
     weak var displayer: LoginDisplayer?
     weak var delegate: LoginPresenterDelegate?
+
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
+    }
 
     func bind(displayer: LoginDisplayer) {
         self.displayer = displayer
@@ -55,15 +61,15 @@ class LoginPresenterImpl: LoginPresenter {
         }
 
         // Perform the network request
-        let task = URLSession.shared.dataTask(with: request) { [self] data, response, error in
+        let task = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
             if let error = error {
-                self.delegate?.loginFailed(with: error)
+                self?.delegate?.loginFailed(with: error)
                 return
             }
 
             guard let data = data else {
                 let error = NSError(domain: "NetworkErrorDomain", code: 1, userInfo: [NSLocalizedDescriptionKey: "No data received"])
-                self.delegate?.loginFailed(with: error)
+                self?.delegate?.loginFailed(with: error)
                 return
             }
 
@@ -74,20 +80,43 @@ class LoginPresenterImpl: LoginPresenter {
                 // Assuming authToken is received from the server upon successful login
                 if let authToken = responseJSON?["jwt"] as? String {
                     // Call the loginSuccessful function with the received authToken and user
-                    delegate?.loginSuccessful(withAuthToken: authToken)
+                    self?.saveToken(authToken: authToken)
+                    self?.displayHome()
                 } else if let errorMessage = responseJSON?["jwt"] as? String {
                     let error = NSError(domain: "LoginErrorDomain", code: 401, userInfo: [NSLocalizedDescriptionKey: errorMessage])
-                    self.delegate?.loginFailed(with: error)
+                    self?.delegate?.loginFailed(with: error)
                 } else {
                     let error = NSError(domain: "LoginErrorDomain", code: 401, userInfo: [NSLocalizedDescriptionKey: "Invalid response from the server"])
-                    self.delegate?.loginFailed(with: error)
+                    self?.delegate?.loginFailed(with: error)
                 }
             } catch {
-                self.delegate?.loginFailed(with: error)
+                self?.delegate?.loginFailed(with: error)
             }
         }
 
         task.resume()
     }
 
+}
+
+private extension LoginPresenterImpl {
+    func displayHome() {
+        DispatchQueue.main.async { [weak self] in
+            let homeViewContoller = HomeViewController()
+            self?.navigationController.pushViewController(homeViewContoller, animated: true)
+
+        }
+    }
+
+    func saveToken(authToken: String){
+        let authManager = KeychainHelper()
+        do {
+            try authManager.saveTokenToKeychain(token: authToken)
+            // Log success
+            print("Token saved to Keychain")
+        } catch {
+            // Handle the error if saving the token fails
+            print("Error saving token to Keychain: \(error.localizedDescription)")
+        }
+    }
 }

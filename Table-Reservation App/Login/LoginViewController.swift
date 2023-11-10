@@ -14,7 +14,6 @@ protocol LoginDisplayer: AnyObject {
 
 // Protocol to define methods for handling login-related events
 protocol LoginPresenterDelegate: AnyObject {
-    func loginSuccessful(withAuthToken authToken: String)
     func loginFailed(with error: Error)
 }
 
@@ -83,8 +82,17 @@ class LoginViewController: UIViewController, LoginDisplayer {
         return button
     }()
 
-    var presenter: LoginPresenter = LoginPresenterImpl()
+    private var presenter: LoginPresenter
 
+    init(presenter: LoginPresenter) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - View Lifecycle
 
     override func viewDidLoad() {
@@ -131,21 +139,6 @@ class LoginViewController: UIViewController, LoginDisplayer {
 
 extension LoginViewController: LoginPresenterDelegate {
 
-    func loginSuccessful(withAuthToken authToken: String) {
-        let authManager = KeychainHelper()
-        do {
-            try authManager.saveTokenToKeychain(token: authToken)
-            // Log success
-            print("Token saved to Keychain")
-        } catch {
-            // Handle the error if saving the token fails
-            print("Error saving token to Keychain: \(error.localizedDescription)")
-        }
-        DispatchQueue.main.async {
-            let homeViewController = HomeViewController()
-            self.navigationController?.pushViewController(homeViewController, animated: true)
-        }
-    }
     func loginFailed(with error: Error) {
         // Handle login failure, e.g., display an alert
         print("Login error: \(error.localizedDescription)")

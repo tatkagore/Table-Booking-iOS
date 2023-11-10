@@ -81,6 +81,7 @@ class UserPresenterImpl: UserPresenter {
                     // Parse the user data
                     if let user = UserModel(jsonData: userJSON) {
                         displayer?.updateSuccessful(with: user)
+                        displayer?.showMessageSuccessful(with: "Update is Successful")
                     } else {
                         displayer?.updateFailed(with: APIError.unknownError)
                     }

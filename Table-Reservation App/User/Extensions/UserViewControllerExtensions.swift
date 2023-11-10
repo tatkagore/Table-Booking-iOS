@@ -43,7 +43,7 @@ extension UserProfileViewController {
             bottomStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             bottomStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             bottomStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            bottomStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20)
+            bottomStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30)
 
         ])
     }

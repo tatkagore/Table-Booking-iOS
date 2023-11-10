@@ -145,7 +145,8 @@ class UserProfileViewController: UIViewController {
             try authManager.logout()
             // Log success
             print("Token deleted from Keychain")
-            self.navigationController?.pushViewController(LoginViewController(), animated: true)
+            let presenter = LoginPresenterImpl(navigationController: navigationController!)
+            self.navigationController?.pushViewController(LoginViewController(presenter: presenter), animated: true)
         } catch {
             // Handle the error if logging out fails
             print("Error logging out: \(error.localizedDescription)")
@@ -158,7 +159,6 @@ extension UserProfileViewController: UserProfileDisplayer {
     func updateSuccessful(with user: UserModel) {
         DispatchQueue.main.async { [weak self] in
             self?.user = user
-            self?.showMessageSuccessful(with: "Update is Successful")
         }
     }
 
@@ -171,13 +171,13 @@ extension UserProfileViewController: UserProfileDisplayer {
     func showMessageSuccessful(with message: String) {
         serverResponceLabel.text = message
         serverResponceLabel.isHidden = false
-        serverResponceLabel.textColor = .green
+        serverResponceLabel.textColor = UIColor.myGreen
 
     }
     func showMessageFail(with message: String) {
         serverResponceLabel.text = message
         serverResponceLabel.isHidden = false
-        serverResponceLabel.textColor = .red
+        serverResponceLabel.textColor = UIColor.myRed
 
     }
 }
