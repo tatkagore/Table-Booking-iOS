@@ -12,21 +12,59 @@ import UIKit
 extension HomeViewController {
     // MARK: - Auto Layout
 
-    func setUpConstraints() {
-        let stackView = UIStackView(arrangedSubviews: [helloUserNameLabel, letsBookTableLabel, datePicker])
-        stackView.axis = .vertical
-        stackView.alignment = .leading
-        stackView.spacing = 10
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+//    func setUpConstraints() {
+//        let stackView1 = UIStackView(arrangedSubviews: [helloUserNameLabel, letsBookTableLabel])
+//        stackView1.axis = .vertical
+//        stackView1.alignment = .leading
+//        stackView1.spacing = 10
+//        stackView1.translatesAutoresizingMaskIntoConstraints = false
+//
+//        let stackView2 = UIStackView(arrangedSubviews: [whenPlanVisitLabel, datePicker])
+//        stackView2.axis = .vertical
+//        stackView2.alignment = .leading
+//        stackView2.spacing = 10
+//        stackView2.translatesAutoresizingMaskIntoConstraints = false
+//
+//        view.addSubview(stackView1)
+//        view.addSubview(stackView2)
+//
+//        stackView1.topAnchor.constraint(equalTo: view.topAnchor, constant: 90).isActive = true
+//        stackView1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+//        stackView1.trailingAnchor.constraint(equalTo: userProfileButton.leadingAnchor, constant: 10).isActive = true
+//
+//
+//        datePicker.topAnchor.constraint(equalTo: stackView1.bottomAnchor, constant: 20).isActive = true
+//        datePicker.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+//
+//        NSLayoutConstraint.activate([
+//            userProfileButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -5),
+//            userProfileButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+//            userProfileButton.widthAnchor.constraint(equalToConstant: 55),
+//            userProfileButton.heightAnchor.constraint(equalToConstant: 55)
+//        ])
+//    }
 
-        view.addSubview(stackView)
+    func setUpConstraints() {
+        let stackView1 = UIStackView(arrangedSubviews: [helloUserNameLabel, letsBookTableLabel])
+        stackView1.axis = .vertical
+        stackView1.alignment = .leading
+        stackView1.spacing = 10
+        stackView1.translatesAutoresizingMaskIntoConstraints = false
+
+        view.addSubview(stackView1)
+        view.addSubview(whenPlanVisitLabel)
         view.addSubview(datePicker)
 
-        stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 90).isActive = true
-        stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: userProfileButton.leadingAnchor, constant: 10).isActive = true
+        stackView1.topAnchor.constraint(equalTo: view.topAnchor, constant: 90).isActive = true
+        stackView1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        stackView1.trailingAnchor.constraint(equalTo: userProfileButton.leadingAnchor, constant: 10).isActive = true
 
-        datePicker.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 20).isActive = true
+
+        whenPlanVisitLabel.topAnchor.constraint(equalTo: stackView1.bottomAnchor, constant: 20).isActive = true
+        whenPlanVisitLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        whenPlanVisitLabel.trailingAnchor.constraint(equalTo: userProfileButton.leadingAnchor, constant: 30).isActive = true
+
+        datePicker.topAnchor.constraint(equalTo: whenPlanVisitLabel.bottomAnchor, constant: 20).isActive = true
         datePicker.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 
         NSLayoutConstraint.activate([
@@ -36,4 +74,5 @@ extension HomeViewController {
             userProfileButton.heightAnchor.constraint(equalToConstant: 55)
         ])
     }
+
 }

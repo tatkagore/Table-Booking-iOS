@@ -38,11 +38,11 @@ class HomeViewController: UIViewController, HomePresenterDelegate {
         return label
     }()
 
-    var ReservationTimeLabel: UILabel = {
+    var whenPlanVisitLabel: UILabel = {
         let label = UILabel()
-        label.text = "When do you plan "
+        label.text = "When do you plan to visit?"
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 20)
+        label.font = UIFont.systemFont(ofSize: 15, weight: .light)
         label.textColor = UIColor.myBlue
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -74,6 +74,7 @@ class HomeViewController: UIViewController, HomePresenterDelegate {
         view.addSubview(helloUserNameLabel)
         view.addSubview(letsBookTableLabel)
         view.addSubview(userProfileButton)
+        view.addSubview(whenPlanVisitLabel)
         presenter.bind(displayer: self)
         setUpConstraints()
         presenter.onViewDidLoad()
