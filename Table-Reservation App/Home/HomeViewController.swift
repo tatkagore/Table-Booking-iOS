@@ -40,7 +40,7 @@ class HomeViewController: UIViewController, HomePresenterDelegate {
 
     var whenPlanVisitLabel: UILabel = {
         let label = UILabel()
-        label.text = "When do you plan to visit?"
+        label.text = "Chose time when do you plan to visit?"
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 15, weight: .light)
         label.textColor = UIColor.myBlue
@@ -57,14 +57,38 @@ class HomeViewController: UIViewController, HomePresenterDelegate {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+
     var datePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
-        datePicker.datePickerMode = .dateAndTime // You can choose the desired mode
+        datePicker.datePickerMode = .dateAndTime
         datePicker.translatesAutoresizingMaskIntoConstraints = false
         datePicker.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
         return datePicker
     }()
 
+    var noteLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Write any note to let us know more details:"
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 15, weight: .light)
+        label.textColor = UIColor.myBlue
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    var textField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Type here..."
+        textField.textColor = .gray // Change text color
+        textField.font = UIFont.systemFont(ofSize: 16) // Change font and size
+        textField.backgroundColor = .white // Change background color
+        textField.borderStyle = .roundedRect // Change border style
+        textField.layer.cornerRadius = 8 // Round corners
+        textField.layer.borderWidth = 1.0 // Add border width
+        textField.layer.borderColor = UIColor(named: "AccentColor")?.cgColor
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+       }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
