@@ -13,6 +13,7 @@
 		FE67541B2ADEAC9C0079C15E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE67541A2ADEAC9C0079C15E /* SceneDelegate.swift */; };
 		FE6754222ADEAC9D0079C15E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE6754212ADEAC9D0079C15E /* Assets.xcassets */; };
 		FE6754252ADEAC9D0079C15E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE6754232ADEAC9D0079C15E /* LaunchScreen.storyboard */; };
+		FE8135D32B1A2A8B007D91A6 /* RoundStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8135D22B1A2A8B007D91A6 /* RoundStepper.swift */; };
 		FE89377E2AF3F479001FDD6F /* ExtensionHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE89377D2AF3F479001FDD6F /* ExtensionHomeViewController.swift */; };
 		FE8937802AF41501001FDD6F /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE89377F2AF41501001FDD6F /* SignUpPresenter.swift */; };
 		FE8937822AF41542001FDD6F /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8937812AF41542001FDD6F /* SignUpModel.swift */; };
@@ -42,6 +43,7 @@
 		FE6754212ADEAC9D0079C15E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FE6754242ADEAC9D0079C15E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FE6754262ADEAC9D0079C15E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE8135D22B1A2A8B007D91A6 /* RoundStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundStepper.swift; sourceTree = "<group>"; };
 		FE89377D2AF3F479001FDD6F /* ExtensionHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionHomeViewController.swift; sourceTree = "<group>"; };
 		FE89377F2AF41501001FDD6F /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
 		FE8937812AF41542001FDD6F /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			children = (
 				FE89377D2AF3F479001FDD6F /* ExtensionHomeViewController.swift */,
 				FE8F2B422AFAA27300438ACA /* ErrorMessage.swift */,
+				FE8135D22B1A2A8B007D91A6 /* RoundStepper.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				FE9A79C12AE12E1500946AA7 /* UserPresenter.swift in Sources */,
 				FE8937822AF41542001FDD6F /* SignUpModel.swift in Sources */,
 				FE8F2B3A2AF4F25B00438ACA /* KeychainHelper.swift in Sources */,
+				FE8135D32B1A2A8B007D91A6 /* RoundStepper.swift in Sources */,
 				FE6754192ADEAC9C0079C15E /* AppDelegate.swift in Sources */,
 				FE9A79A92ADECF5900946AA7 /* UserModel.swift in Sources */,
 				FE9A79A72ADECE5F00946AA7 /* StyledButton.swift in Sources */,
