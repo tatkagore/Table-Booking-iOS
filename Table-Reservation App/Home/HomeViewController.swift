@@ -101,7 +101,7 @@ class HomeViewController: UIViewController, HomePresenterDelegate {
 
     let customStepper: RoundStepper = {
         let blueOcean = UIColor(red: 51, green: 65, blue: 149)
-        let stepper = RoundStepper(viewData: .init(color: blueOcean, minimum: 0, maximum: 100, stepValue: 10))
+        let stepper = RoundStepper(viewData: .init(color: blueOcean, minimum: 0, maximum: 10, stepValue: 1))
         stepper.translatesAutoresizingMaskIntoConstraints = false
         stepper.addTarget(self, action: #selector(didStepperValueChanged), for: .valueChanged)
         return stepper
