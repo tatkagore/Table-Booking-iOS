@@ -18,7 +18,7 @@ class RoundStepper: UIControl {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
     label.textAlignment = .center
-    label.text = "0"
+    label.text = "1"
     return label
   }()
 

@@ -79,12 +79,12 @@ class HomeViewController: UIViewController, HomePresenterDelegate {
     var textField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Type here..."
-        textField.textColor = .gray // Change text color
-        textField.font = UIFont.systemFont(ofSize: 16) // Change font and size
-        textField.backgroundColor = .white // Change background color
-        textField.borderStyle = .roundedRect // Change border style
-        textField.layer.cornerRadius = 8 // Round corners
-        textField.layer.borderWidth = 1.0 // Add border width
+        textField.textColor = .gray
+        textField.font = UIFont.systemFont(ofSize: 16)
+        textField.backgroundColor = .white
+        textField.borderStyle = .roundedRect
+        textField.layer.cornerRadius = 8
+        textField.layer.borderWidth = 1.0
         textField.layer.borderColor = UIColor(named: "AccentColor")?.cgColor
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -101,11 +101,19 @@ class HomeViewController: UIViewController, HomePresenterDelegate {
 
     let customStepper: RoundStepper = {
         let blueOcean = UIColor(red: 51, green: 65, blue: 149)
-        let stepper = RoundStepper(viewData: .init(color: blueOcean, minimum: 0, maximum: 10, stepValue: 1))
+        let stepper = RoundStepper(viewData: .init(color: blueOcean, minimum: 1, maximum: 10, stepValue: 1))
         stepper.translatesAutoresizingMaskIntoConstraints = false
         stepper.addTarget(self, action: #selector(didStepperValueChanged), for: .valueChanged)
         return stepper
       }()
+
+    var reserveButton: StyledButton = {
+        let button = StyledButton(type: .system)
+        button.setTitle("Reserve", for: .normal)
+        button.addTarget(self, action: #selector(reserveButtonTapped), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -125,6 +133,11 @@ class HomeViewController: UIViewController, HomePresenterDelegate {
         let userProfileViewController = UserProfileViewController()
         userProfileViewController.user = user
         navigationController?.pushViewController(userProfileViewController, animated: true)
+    }
+
+
+    @objc func reserveButtonTapped() {
+       print("Reserve tapped")
     }
 
     @objc private func didStepperValueChanged() {

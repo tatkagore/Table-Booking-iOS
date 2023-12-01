@@ -36,7 +36,6 @@ extension SignUpViewController {
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
 
-            // Add the horizontal stackView for "Don't have an account? Sign up" label and "SignUp" button
             stackViewHorizontal.topAnchor.constraint(equalTo: createAccountButton.bottomAnchor, constant: 20),
             stackViewHorizontal.centerXAnchor.constraint(equalTo: view.centerXAnchor)
 
