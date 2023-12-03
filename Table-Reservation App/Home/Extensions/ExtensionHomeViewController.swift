@@ -66,10 +66,10 @@ extension HomeViewController {
             customStepper.widthAnchor.constraint(equalToConstant: 150),
             customStepper.heightAnchor.constraint(equalToConstant: 50),
 
-            reserveButton.topAnchor.constraint(equalTo: customStepper.bottomAnchor, constant: 20),
             reserveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            reserveButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            reserveButton.widthAnchor.constraint(equalToConstant: 150)
+            reserveButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            reserveButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            reserveButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30)
 
         ])
 
