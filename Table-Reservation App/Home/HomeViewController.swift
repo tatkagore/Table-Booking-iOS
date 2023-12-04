@@ -132,7 +132,8 @@ class HomeViewController: UIViewController, HomePresenterDelegate {
     @objc func userProfileButtonTapped() {
         let userProfileViewController = UserProfileViewController()
         userProfileViewController.user = user
-        navigationController?.pushViewController(userProfileViewController, animated: true)
+//        navigationController?.pushViewController(userProfileViewController, animated: true)
+        self.present(UINavigationController(rootViewController: userProfileViewController), animated: true, completion: nil)
     }
 
 
