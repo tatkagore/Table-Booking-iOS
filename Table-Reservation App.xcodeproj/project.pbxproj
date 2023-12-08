@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		7B0CE8652AE2847900B2736D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0CE8642AE2847900B2736D /* HomeViewController.swift */; };
 		7B0CE8682AE2A5D100B2736D /* ExtensionLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0CE8672AE2A5D100B2736D /* ExtensionLoginViewController.swift */; };
+		FE02E9AC2B21E39500A67C9F /* Table_Reservation_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE02E9AB2B21E39500A67C9F /* Table_Reservation_AppUITests.swift */; };
+		FE02E9AE2B21E39500A67C9F /* Table_Reservation_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE02E9AD2B21E39500A67C9F /* Table_Reservation_AppUITestsLaunchTests.swift */; };
 		FE6754192ADEAC9C0079C15E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6754182ADEAC9C0079C15E /* AppDelegate.swift */; };
 		FE67541B2ADEAC9C0079C15E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE67541A2ADEAC9C0079C15E /* SceneDelegate.swift */; };
 		FE6754222ADEAC9D0079C15E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE6754212ADEAC9D0079C15E /* Assets.xcassets */; };
@@ -35,9 +37,22 @@
 		FEEBEBCC2AF3E5C000BA226E /* ExtensionSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEBEBCB2AF3E5C000BA226E /* ExtensionSignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		FE02E9AF2B21E39500A67C9F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FE67540D2ADEAC9C0079C15E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FE6754142ADEAC9C0079C15E;
+			remoteInfo = "Table-Reservation App";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		7B0CE8642AE2847900B2736D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		7B0CE8672AE2A5D100B2736D /* ExtensionLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionLoginViewController.swift; sourceTree = "<group>"; };
+		FE02E9A92B21E39500A67C9F /* Table-Reservation AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Table-Reservation AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE02E9AB2B21E39500A67C9F /* Table_Reservation_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Table_Reservation_AppUITests.swift; sourceTree = "<group>"; };
+		FE02E9AD2B21E39500A67C9F /* Table_Reservation_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Table_Reservation_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FE6754152ADEAC9C0079C15E /* Table-Reservation App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Table-Reservation App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE6754182ADEAC9C0079C15E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE67541A2ADEAC9C0079C15E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +82,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		FE02E9A62B21E39500A67C9F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FE6754122ADEAC9C0079C15E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -86,10 +108,20 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		FE02E9AA2B21E39500A67C9F /* Table-Reservation AppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FE02E9AB2B21E39500A67C9F /* Table_Reservation_AppUITests.swift */,
+				FE02E9AD2B21E39500A67C9F /* Table_Reservation_AppUITestsLaunchTests.swift */,
+			);
+			path = "Table-Reservation AppUITests";
+			sourceTree = "<group>";
+		};
 		FE67540C2ADEAC9C0079C15E = {
 			isa = PBXGroup;
 			children = (
 				FE6754172ADEAC9C0079C15E /* Table-Reservation App */,
+				FE02E9AA2B21E39500A67C9F /* Table-Reservation AppUITests */,
 				FE6754162ADEAC9C0079C15E /* Products */,
 				FE8F2B3B2AF53BCD00438ACA /* Frameworks */,
 			);
@@ -99,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				FE6754152ADEAC9C0079C15E /* Table-Reservation App.app */,
+				FE02E9A92B21E39500A67C9F /* Table-Reservation AppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -227,6 +260,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		FE02E9A82B21E39500A67C9F /* Table-Reservation AppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FE02E9B32B21E39500A67C9F /* Build configuration list for PBXNativeTarget "Table-Reservation AppUITests" */;
+			buildPhases = (
+				FE02E9A52B21E39500A67C9F /* Sources */,
+				FE02E9A62B21E39500A67C9F /* Frameworks */,
+				FE02E9A72B21E39500A67C9F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FE02E9B02B21E39500A67C9F /* PBXTargetDependency */,
+			);
+			name = "Table-Reservation AppUITests";
+			productName = "Table-Reservation AppUITests";
+			productReference = FE02E9A92B21E39500A67C9F /* Table-Reservation AppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		FE6754142ADEAC9C0079C15E /* Table-Reservation App */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FE6754292ADEAC9D0079C15E /* Build configuration list for PBXNativeTarget "Table-Reservation App" */;
@@ -254,6 +305,10 @@
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
+					FE02E9A82B21E39500A67C9F = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = FE6754142ADEAC9C0079C15E;
+					};
 					FE6754142ADEAC9C0079C15E = {
 						CreatedOnToolsVersion = 15.0;
 					};
@@ -273,11 +328,19 @@
 			projectRoot = "";
 			targets = (
 				FE6754142ADEAC9C0079C15E /* Table-Reservation App */,
+				FE02E9A82B21E39500A67C9F /* Table-Reservation AppUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		FE02E9A72B21E39500A67C9F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FE6754132ADEAC9C0079C15E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -290,6 +353,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		FE02E9A52B21E39500A67C9F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE02E9AE2B21E39500A67C9F /* Table_Reservation_AppUITestsLaunchTests.swift in Sources */,
+				FE02E9AC2B21E39500A67C9F /* Table_Reservation_AppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FE6754112ADEAC9C0079C15E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -322,6 +394,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		FE02E9B02B21E39500A67C9F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FE6754142ADEAC9C0079C15E /* Table-Reservation App */;
+			targetProxy = FE02E9AF2B21E39500A67C9F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		FE6754232ADEAC9D0079C15E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -334,6 +414,38 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		FE02E9B12B21E39500A67C9F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "tatiana.simmer.Table-Reservation-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Table-Reservation App";
+			};
+			name = Debug;
+		};
+		FE02E9B22B21E39500A67C9F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "tatiana.simmer.Table-Reservation-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Table-Reservation App";
+			};
+			name = Release;
+		};
 		FE6754272ADEAC9D0079C15E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -508,6 +620,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		FE02E9B32B21E39500A67C9F /* Build configuration list for PBXNativeTarget "Table-Reservation AppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE02E9B12B21E39500A67C9F /* Debug */,
+				FE02E9B22B21E39500A67C9F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		FE6754102ADEAC9C0079C15E /* Build configuration list for PBXProject "Table-Reservation App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
