@@ -17,6 +17,7 @@ protocol HomePresenterDelegate: AnyObject {
 
 class HomeViewController: UIViewController, HomePresenterDelegate {
     var presenter: HomePresenter = HomePresenterImpl()
+    var restaurantCardView = RestaurantCardView()
     var user: UserModel?
     var helloUserNameLabel: UILabel = {
         let label = UILabel()
@@ -40,7 +41,7 @@ class HomeViewController: UIViewController, HomePresenterDelegate {
 
     var whenPlanVisitLabel: UILabel = {
         let label = UILabel()
-        label.text = "Chose time when do you plan to visit?"
+        label.text = "Chose date and time"
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 15, weight: .light)
         label.textColor = UIColor.myBlue
@@ -68,7 +69,7 @@ class HomeViewController: UIViewController, HomePresenterDelegate {
 
     var noteLabel: UILabel = {
         let label = UILabel()
-        label.text = "Write any note to let us know more details:"
+        label.text = "Additional information for booking"
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 15, weight: .light)
         label.textColor = UIColor.myBlue
@@ -91,7 +92,7 @@ class HomeViewController: UIViewController, HomePresenterDelegate {
        }()
     var numOfPeopleLabel: UILabel = {
         let label = UILabel()
-        label.text = "How many people?"
+        label.text = "Number of guests"
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 15, weight: .light)
         label.textColor = UIColor.myBlue
@@ -132,10 +133,9 @@ class HomeViewController: UIViewController, HomePresenterDelegate {
     @objc func userProfileButtonTapped() {
         let userProfileViewController = UserProfileViewController()
         userProfileViewController.user = user
-//        navigationController?.pushViewController(userProfileViewController, animated: true)
-        self.present(UINavigationController(rootViewController: userProfileViewController), animated: true, completion: nil)
+        navigationController?.pushViewController(userProfileViewController, animated: true)
+//        self.present(UINavigationController(rootViewController: userProfileViewController), animated: true, completion: nil)
     }
-
 
     @objc func reserveButtonTapped() {
        print("Reserve tapped")

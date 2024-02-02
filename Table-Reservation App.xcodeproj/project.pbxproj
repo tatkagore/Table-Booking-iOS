@@ -11,6 +11,7 @@
 		7B0CE8682AE2A5D100B2736D /* ExtensionLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0CE8672AE2A5D100B2736D /* ExtensionLoginViewController.swift */; };
 		FE02E9AC2B21E39500A67C9F /* Table_Reservation_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE02E9AB2B21E39500A67C9F /* Table_Reservation_AppUITests.swift */; };
 		FE02E9AE2B21E39500A67C9F /* Table_Reservation_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE02E9AD2B21E39500A67C9F /* Table_Reservation_AppUITestsLaunchTests.swift */; };
+		FE11CF522B6BC309002E52A6 /* InformationCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE11CF512B6BC309002E52A6 /* InformationCardView.swift */; };
 		FE6754192ADEAC9C0079C15E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6754182ADEAC9C0079C15E /* AppDelegate.swift */; };
 		FE67541B2ADEAC9C0079C15E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE67541A2ADEAC9C0079C15E /* SceneDelegate.swift */; };
 		FE6754222ADEAC9D0079C15E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE6754212ADEAC9D0079C15E /* Assets.xcassets */; };
@@ -53,6 +54,7 @@
 		FE02E9A92B21E39500A67C9F /* Table-Reservation AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Table-Reservation AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE02E9AB2B21E39500A67C9F /* Table_Reservation_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Table_Reservation_AppUITests.swift; sourceTree = "<group>"; };
 		FE02E9AD2B21E39500A67C9F /* Table_Reservation_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Table_Reservation_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FE11CF512B6BC309002E52A6 /* InformationCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationCardView.swift; sourceTree = "<group>"; };
 		FE6754152ADEAC9C0079C15E /* Table-Reservation App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Table-Reservation App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE6754182ADEAC9C0079C15E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE67541A2ADEAC9C0079C15E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 			children = (
 				FE9A79A62ADECE5F00946AA7 /* StyledButton.swift */,
 				FEEBEBC52AF3D84700BA226E /* StyledTextField.swift */,
+				FE11CF512B6BC309002E52A6 /* InformationCardView.swift */,
 			);
 			path = UIElements;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				FE9A79BF2AE12DF800946AA7 /* UserProfileViewController.swift in Sources */,
 				7B0CE8652AE2847900B2736D /* HomeViewController.swift in Sources */,
 				FE67541B2ADEAC9C0079C15E /* SceneDelegate.swift in Sources */,
+				FE11CF522B6BC309002E52A6 /* InformationCardView.swift in Sources */,
 				7B0CE8682AE2A5D100B2736D /* ExtensionLoginViewController.swift in Sources */,
 				FEEBEBC62AF3D84700BA226E /* StyledTextField.swift in Sources */,
 				FE8F2B412AFA2D6B00438ACA /* HomePresenter.swift in Sources */,
