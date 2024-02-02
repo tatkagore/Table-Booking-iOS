@@ -43,7 +43,7 @@ class HomeViewController: UIViewController, HomePresenterDelegate {
         let label = UILabel()
         label.text = "Chose date and time"
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 15, weight: .light)
+        label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         label.textColor = UIColor.myBlue
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -71,7 +71,7 @@ class HomeViewController: UIViewController, HomePresenterDelegate {
         let label = UILabel()
         label.text = "Additional information for booking"
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 15, weight: .light)
+        label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         label.textColor = UIColor.myBlue
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -94,7 +94,7 @@ class HomeViewController: UIViewController, HomePresenterDelegate {
         let label = UILabel()
         label.text = "Number of guests"
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 15, weight: .light)
+        label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         label.textColor = UIColor.myBlue
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

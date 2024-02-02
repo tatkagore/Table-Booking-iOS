@@ -21,14 +21,19 @@ extension HomeViewController {
         stackView1.translatesAutoresizingMaskIntoConstraints = false
         restaurantCardView.translatesAutoresizingMaskIntoConstraints = false
 
+        let stackView2 = UIStackView(arrangedSubviews: [numOfPeopleLabel, customStepper])
+        stackView2.axis = .horizontal
+        stackView2.alignment = .leading
+        stackView2.spacing = 30
+        stackView2.translatesAutoresizingMaskIntoConstraints = false
+
         view.addSubview(stackView1)
+        view.addSubview(stackView2)
         view.addSubview(restaurantCardView)
         view.addSubview(whenPlanVisitLabel)
         view.addSubview(datePicker)
         view.addSubview(textField)
         view.addSubview(noteLabel)
-        view.addSubview(numOfPeopleLabel)
-        view.addSubview(customStepper)
         view.addSubview(reserveButton)
 
         NSLayoutConstraint.activate([
@@ -39,7 +44,6 @@ extension HomeViewController {
             userProfileButton.heightAnchor.constraint(equalToConstant: 55),
 
             stackView1.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            //        stackView1.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
             stackView1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             stackView1.trailingAnchor.constraint(equalTo: userProfileButton.leadingAnchor, constant: 10),
 
@@ -50,25 +54,19 @@ extension HomeViewController {
             whenPlanVisitLabel.topAnchor.constraint(equalTo: restaurantCardView.bottomAnchor, constant: 20),
             whenPlanVisitLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
 
-            datePicker.topAnchor.constraint(equalTo: whenPlanVisitLabel.bottomAnchor, constant: 20),
+            datePicker.topAnchor.constraint(equalTo: whenPlanVisitLabel.bottomAnchor, constant: 15),
             datePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            stackView2.topAnchor.constraint(equalTo: datePicker.bottomAnchor, constant: 20),
+            stackView2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
 
-            noteLabel.topAnchor.constraint(equalTo: datePicker.bottomAnchor, constant: 20),
+            noteLabel.topAnchor.constraint(equalTo: customStepper.bottomAnchor, constant: 20),
             noteLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
 
             textField.topAnchor.constraint(equalTo: noteLabel.bottomAnchor, constant: 20),
             textField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             textField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
-            textField.heightAnchor.constraint(equalToConstant: 60),
-            textField.widthAnchor.constraint(equalToConstant: 200),
-
-            numOfPeopleLabel.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 20),
-            numOfPeopleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-
-            customStepper.topAnchor.constraint(equalTo: numOfPeopleLabel.bottomAnchor, constant: 20),
-            customStepper.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            customStepper.widthAnchor.constraint(equalToConstant: 150),
-            customStepper.heightAnchor.constraint(equalToConstant: 50),
+            textField.heightAnchor.constraint(equalToConstant: 50),
+            textField.widthAnchor.constraint(equalToConstant: 190),
 
             reserveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             reserveButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
@@ -76,8 +74,5 @@ extension HomeViewController {
             reserveButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30)
 
         ])
-
-
     }
-
 }

@@ -93,11 +93,11 @@ class RoundStepper: UIControl {
     button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     button.setTitle(text, for: .normal)
     button.tag = value
-    button.titleLabel?.font = .systemFont(ofSize: 17, weight: .bold)
-    button.setTitleColor(.white, for: .normal)
+    button.titleLabel?.font = .systemFont(ofSize: 15, weight: .semibold)
+    button.setTitleColor(.myBlue, for: .normal)
     button.setTitleColor(color.withAlphaComponent(0.5), for: .highlighted)
-    button.backgroundColor = color
-    button.layer.borderColor = color.cgColor
+    button.backgroundColor = UIColor.white
+    button.layer.borderColor = UIColor.myBlue.cgColor
     button.layer.borderWidth = 1
     return button
   }
