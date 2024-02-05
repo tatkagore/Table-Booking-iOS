@@ -21,20 +21,9 @@ extension HomeViewController {
         stackView1.translatesAutoresizingMaskIntoConstraints = false
         restaurantCardView.translatesAutoresizingMaskIntoConstraints = false
 
-        let stackView2 = UIStackView(arrangedSubviews: [numOfPeopleLabel, customStepper])
-        stackView2.axis = .horizontal
-        stackView2.alignment = .leading
-        stackView2.spacing = 30
-        stackView2.translatesAutoresizingMaskIntoConstraints = false
-
         contentView.addSubview(stackView1)
-        contentView.addSubview(stackView2)
         contentView.addSubview(restaurantImageView)
         contentView.addSubview(restaurantCardView)
-        contentView.addSubview(whenPlanVisitLabel)
-        contentView.addSubview(datePicker)
-        contentView.addSubview(textField)
-        contentView.addSubview(noteLabel)
         contentView.addSubview(reserveButton)
         contentView.addSubview(userProfileButton)
 
@@ -70,29 +59,11 @@ extension HomeViewController {
             restaurantCardView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             restaurantCardView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
 
-            whenPlanVisitLabel.topAnchor.constraint(equalTo: restaurantCardView.bottomAnchor, constant: 20),
-            whenPlanVisitLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-
-            datePicker.topAnchor.constraint(equalTo: whenPlanVisitLabel.bottomAnchor, constant: 15),
-            datePicker.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            stackView2.topAnchor.constraint(equalTo: datePicker.bottomAnchor, constant: 20),
-            stackView2.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-
-            noteLabel.topAnchor.constraint(equalTo: customStepper.bottomAnchor, constant: 20),
-            noteLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-
-            textField.topAnchor.constraint(equalTo: noteLabel.bottomAnchor, constant: 20),
-            textField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            textField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -50),
-            textField.heightAnchor.constraint(equalToConstant: 50),
-            textField.widthAnchor.constraint(equalToConstant: 190),
-
             //            reserveButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            reserveButton.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 20),
+            reserveButton.topAnchor.constraint(equalTo: restaurantCardView.bottomAnchor, constant: 20),
             reserveButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             reserveButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             //            reserveButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -30)
-
         ])
     }
 }

@@ -47,16 +47,6 @@ class HomeViewController: UIViewController, HomePresenterDelegate {
         return label
     }()
 
-    var whenPlanVisitLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Chose date and time"
-        label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
-        label.textColor = UIColor.myBlue
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-
     var userProfileButton: profileButton = {
         let button = profileButton()
         // Set the image for the button
@@ -67,63 +57,13 @@ class HomeViewController: UIViewController, HomePresenterDelegate {
         return button
     }()
 
-    var datePicker: UIDatePicker = {
-        let datePicker = UIDatePicker()
-        datePicker.datePickerMode = .dateAndTime
-        datePicker.translatesAutoresizingMaskIntoConstraints = false
-        datePicker.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
-        return datePicker
-    }()
-
-    var noteLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Additional information for booking"
-        label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
-        label.textColor = UIColor.myBlue
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-
-    var textField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Type here..."
-        textField.textColor = .gray
-        textField.font = UIFont.systemFont(ofSize: 16)
-        textField.backgroundColor = .white
-        textField.borderStyle = .roundedRect
-        textField.layer.cornerRadius = 8
-        textField.layer.borderWidth = 1.0
-        textField.layer.borderColor = UIColor(named: "AccentColor")?.cgColor
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        return textField
-    }()
-    var numOfPeopleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Number of guests"
-        label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
-        label.textColor = UIColor.myBlue
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-
-    let customStepper: RoundStepper = {
-        let blueOcean = UIColor(red: 51, green: 65, blue: 149)
-        let stepper = RoundStepper(viewData: .init(color: blueOcean, minimum: 1, maximum: 10, stepValue: 1))
-        stepper.translatesAutoresizingMaskIntoConstraints = false
-        stepper.addTarget(self, action: #selector(didStepperValueChanged), for: .valueChanged)
-        return stepper
-    }()
-
     var reserveButton: StyledButton = {
         let button = StyledButton(type: .system)
-        button.setTitle("Reserve", for: .normal)
+        button.setTitle("Let's Book!", for: .normal)
         button.addTarget(self, action: #selector(reserveButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-
 
     // Create a UIScrollView
     var scrollView: UIScrollView = {
@@ -161,22 +101,16 @@ class HomeViewController: UIViewController, HomePresenterDelegate {
     }
 
     @objc func reserveButtonTapped() {
-        print("Reserve tapped")
-    }
-
-    @objc private func didStepperValueChanged() {
-        print("latest value: \(customStepper.value)")
-    }
-
-    @objc func datePickerValueChanged() {
-        let selectedDate = datePicker.date
+        let reservationViewController = ReservationViewController()
+        // Modal presentation style
+       // reservationViewController.modalPresentationStyle = .formSheet
+        self.present(UINavigationController(rootViewController: reservationViewController), animated: true, completion: nil)
     }
 }
 
 extension HomeViewController: HomeDisplayer {
     func showError(_ error: Error) {
         print("User data fetching error: \(error.localizedDescription)")
-
     }
 
     func showUser(_ user: UserModel) {
