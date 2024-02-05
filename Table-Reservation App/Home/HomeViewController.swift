@@ -19,6 +19,14 @@ class HomeViewController: UIViewController, HomePresenterDelegate {
     var presenter: HomePresenter = HomePresenterImpl()
     var restaurantCardView = RestaurantCardView()
     var user: UserModel?
+
+    let restaurantImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(named: "Cafe")
+        return imageView
+    }()
+
     var helloUserNameLabel: UILabel = {
         let label = UILabel()
         label.text = "Welcome"
@@ -89,7 +97,7 @@ class HomeViewController: UIViewController, HomePresenterDelegate {
         textField.layer.borderColor = UIColor(named: "AccentColor")?.cgColor
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
-       }()
+    }()
     var numOfPeopleLabel: UILabel = {
         let label = UILabel()
         label.text = "Number of guests"
@@ -106,7 +114,7 @@ class HomeViewController: UIViewController, HomePresenterDelegate {
         stepper.translatesAutoresizingMaskIntoConstraints = false
         stepper.addTarget(self, action: #selector(didStepperValueChanged), for: .valueChanged)
         return stepper
-      }()
+    }()
 
     var reserveButton: StyledButton = {
         let button = StyledButton(type: .system)
@@ -116,15 +124,30 @@ class HomeViewController: UIViewController, HomePresenterDelegate {
         return button
     }()
 
+
+    // Create a UIScrollView
+    var scrollView: UIScrollView = {
+        let view = UIScrollView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    var contentView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = false
-        view.addSubview(helloUserNameLabel)
-        view.addSubview(letsBookTableLabel)
-        view.addSubview(userProfileButton)
-        view.addSubview(whenPlanVisitLabel)
+
         presenter.bind(displayer: self)
         setUpConstraints()
         presenter.onViewDidLoad()
@@ -134,15 +157,15 @@ class HomeViewController: UIViewController, HomePresenterDelegate {
         let userProfileViewController = UserProfileViewController()
         userProfileViewController.user = user
         navigationController?.pushViewController(userProfileViewController, animated: true)
-//        self.present(UINavigationController(rootViewController: userProfileViewController), animated: true, completion: nil)
+        //        self.present(UINavigationController(rootViewController: userProfileViewController), animated: true, completion: nil)
     }
 
     @objc func reserveButtonTapped() {
-       print("Reserve tapped")
+        print("Reserve tapped")
     }
 
     @objc private func didStepperValueChanged() {
-      print("latest value: \(customStepper.value)")
+        print("latest value: \(customStepper.value)")
     }
 
     @objc func datePickerValueChanged() {
