@@ -101,7 +101,7 @@ class HomeViewController: UIViewController, HomePresenterDelegate {
     }
 
     @objc func reserveButtonTapped() {
-        let reservationViewController = ReservationViewController()
+        let reservationViewController = ReservationViewController(user: user)
         // Modal presentation style
        // reservationViewController.modalPresentationStyle = .formSheet
         self.present(UINavigationController(rootViewController: reservationViewController), animated: true, completion: nil)

@@ -11,10 +11,13 @@ import UIKit
 protocol ReservationDisplayer: AnyObject {
 }
 protocol ReservationPresenterDelegate: AnyObject {
+    func reservationSuccessful(withAuthToken: String)
+    func reservationFailed(with error: Error)
 }
 
 class ReservationViewController: UIViewController{
     var reservation: ReservationModel?
+    var user: UserModel?
 
     var choseDateAndTimeLabel: UILabel = {
         let label = UILabel()
@@ -84,6 +87,17 @@ class ReservationViewController: UIViewController{
         return button
     }()
 
+    var presenter: ReservationPresenter = ReservationPresenterImpl()
+
+    init(user: UserModel?) {
+        self.user = user
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -97,6 +111,8 @@ class ReservationViewController: UIViewController{
         navigationItem.titleView = titleLabel
     }
 
+    // MARK: - Actions
+
     @objc private func didStepperValueChanged() {
         print("latest value: \(customStepper.value)")
     }
@@ -106,9 +122,28 @@ class ReservationViewController: UIViewController{
     }
 
     @objc func reserveButtonTapped() {
-        print("Reserved a table")
+        guard let note = textField.text, !note.isEmpty else {
+            print("Note field is empty")
+            return
+        }
+        let numberOfGuests = Int(customStepper.value)
+        let selectedDate = datePicker.date
+
+        guard let userId = user?.id else {
+            print("User is empty")
+            return
+        }
+
+        let reservationModel = ReservationModel(
+            date: selectedDate,
+            numberOfGuests: numberOfGuests,
+            note: note,
+            userId: userId
+        )
+        presenter.didTapReserve(with: reservationModel)
     }
 }
+
 extension ReservationViewController {
     // MARK: - Auto Layout
     func setUpConstrains() {
@@ -148,10 +183,24 @@ extension ReservationViewController {
             reserveButton.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 20),
             reserveButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             reserveButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-
-
-
-
         ])
+    }
+}
+
+extension ReservationViewController: ReservationPresenterDelegate {
+
+    func reservationSuccessful(withAuthToken authToken: String) {
+
+//        TODO: Toasters for Success and Failure
+
+        DispatchQueue.main.async {
+            let homeViewController = HomeViewController()
+            self.navigationController?.pushViewController(homeViewController, animated: true)
+        }
+    }
+
+    func reservationFailed(with error: Error) {
+        // Handle login failure, e.g., display an alert
+        print("Login error: \(error.localizedDescription)")
     }
 }
