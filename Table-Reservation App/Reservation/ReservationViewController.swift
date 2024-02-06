@@ -113,17 +113,23 @@ class ReservationViewController: UIViewController{
 
     // MARK: - Actions
 
+    // Custom Stepper
+
     @objc private func didStepperValueChanged() {
         print("latest value: \(customStepper.value)")
     }
+
+    // Date Picker
 
     @objc func datePickerValueChanged() {
         let selectedDate = datePicker.date
     }
 
+    //MARK:  Reservation button
+
     @objc func reserveButtonTapped() {
-        guard let note = textField.text, !note.isEmpty else {
-            print("Note field is empty")
+        guard let note = textField.text else {
+            print("Note is empty")
             return
         }
         let numberOfGuests = Int(customStepper.value)
