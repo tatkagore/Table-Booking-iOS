@@ -51,10 +51,8 @@ class KeychainHelper {
         let status = SecItemCopyMatching(query as CFDictionary, &result)
         
         if status == errSecSuccess, let tokenData = result as? Data, let token = String(data: tokenData, encoding: .utf8) {
-            print(token)
             return token
         } else {
-            print("0")
             return nil
         }
     }
