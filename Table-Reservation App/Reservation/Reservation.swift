@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ReservationModel: Codable {
+struct Reservation: Codable {
     let date: Date
     let numberOfGuests: Int
     let note: String

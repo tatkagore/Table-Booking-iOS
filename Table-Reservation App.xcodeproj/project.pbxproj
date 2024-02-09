@@ -14,8 +14,13 @@
 		FE11CF522B6BC309002E52A6 /* InformationCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE11CF512B6BC309002E52A6 /* InformationCardView.swift */; };
 		FE11CF542B7111A0002E52A6 /* ReservationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE11CF532B7111A0002E52A6 /* ReservationViewController.swift */; };
 		FE11CF572B7111BC002E52A6 /* ReservationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE11CF562B7111BC002E52A6 /* ReservationPresenter.swift */; };
-		FE11CF592B7111CA002E52A6 /* ReservationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE11CF582B7111CA002E52A6 /* ReservationModel.swift */; };
+		FE11CF592B7111CA002E52A6 /* Reservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE11CF582B7111CA002E52A6 /* Reservation.swift */; };
 		FE11CF5B2B73AC23002E52A6 /* AlertMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE11CF5A2B73AC23002E52A6 /* AlertMessage.swift */; };
+		FE11CF5F2B74D9B9002E52A6 /* ReservationsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE11CF5E2B74D9B9002E52A6 /* ReservationsListViewController.swift */; };
+		FE11CF612B74D9D2002E52A6 /* ReservationsListsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE11CF602B74D9D2002E52A6 /* ReservationsListsPresenter.swift */; };
+		FE11CF632B74DA05002E52A6 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE11CF622B74DA05002E52A6 /* Components.swift */; };
+		FE11CF652B750E7C002E52A6 /* ReservationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE11CF642B750E7C002E52A6 /* ReservationModel.swift */; };
+		FE11CF672B752C7C002E52A6 /* ReservationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE11CF662B752C7C002E52A6 /* ReservationTableViewCell.swift */; };
 		FE6754192ADEAC9C0079C15E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6754182ADEAC9C0079C15E /* AppDelegate.swift */; };
 		FE67541B2ADEAC9C0079C15E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE67541A2ADEAC9C0079C15E /* SceneDelegate.swift */; };
 		FE6754222ADEAC9D0079C15E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE6754212ADEAC9D0079C15E /* Assets.xcassets */; };
@@ -61,8 +66,13 @@
 		FE11CF512B6BC309002E52A6 /* InformationCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationCardView.swift; sourceTree = "<group>"; };
 		FE11CF532B7111A0002E52A6 /* ReservationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationViewController.swift; sourceTree = "<group>"; };
 		FE11CF562B7111BC002E52A6 /* ReservationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationPresenter.swift; sourceTree = "<group>"; };
-		FE11CF582B7111CA002E52A6 /* ReservationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationModel.swift; sourceTree = "<group>"; };
+		FE11CF582B7111CA002E52A6 /* Reservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reservation.swift; sourceTree = "<group>"; };
 		FE11CF5A2B73AC23002E52A6 /* AlertMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMessage.swift; sourceTree = "<group>"; };
+		FE11CF5E2B74D9B9002E52A6 /* ReservationsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationsListViewController.swift; sourceTree = "<group>"; };
+		FE11CF602B74D9D2002E52A6 /* ReservationsListsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationsListsPresenter.swift; sourceTree = "<group>"; };
+		FE11CF622B74DA05002E52A6 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		FE11CF642B750E7C002E52A6 /* ReservationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationModel.swift; sourceTree = "<group>"; };
+		FE11CF662B752C7C002E52A6 /* ReservationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationTableViewCell.swift; sourceTree = "<group>"; };
 		FE6754152ADEAC9C0079C15E /* Table-Reservation App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Table-Reservation App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE6754182ADEAC9C0079C15E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE67541A2ADEAC9C0079C15E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -133,7 +143,7 @@
 				FE11CF5C2B73AC2B002E52A6 /* Extensions */,
 				FE11CF532B7111A0002E52A6 /* ReservationViewController.swift */,
 				FE11CF562B7111BC002E52A6 /* ReservationPresenter.swift */,
-				FE11CF582B7111CA002E52A6 /* ReservationModel.swift */,
+				FE11CF582B7111CA002E52A6 /* Reservation.swift */,
 			);
 			path = Reservation;
 			sourceTree = "<group>";
@@ -144,6 +154,18 @@
 				FE11CF5A2B73AC23002E52A6 /* AlertMessage.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FE11CF5D2B74D991002E52A6 /* ReservationsList */ = {
+			isa = PBXGroup;
+			children = (
+				FE11CF5E2B74D9B9002E52A6 /* ReservationsListViewController.swift */,
+				FE11CF602B74D9D2002E52A6 /* ReservationsListsPresenter.swift */,
+				FE11CF622B74DA05002E52A6 /* Components.swift */,
+				FE11CF642B750E7C002E52A6 /* ReservationModel.swift */,
+				FE11CF662B752C7C002E52A6 /* ReservationTableViewCell.swift */,
+			);
+			path = ReservationsList;
 			sourceTree = "<group>";
 		};
 		FE67540C2ADEAC9C0079C15E = {
@@ -168,6 +190,7 @@
 		FE6754172ADEAC9C0079C15E /* Table-Reservation App */ = {
 			isa = PBXGroup;
 			children = (
+				FE11CF5D2B74D991002E52A6 /* ReservationsList */,
 				FE11CF552B7111A9002E52A6 /* Reservation */,
 				FE8F2B382AF4F21300438ACA /* Security */,
 				FEEBEBC72AF3E41800BA226E /* Signup */,
@@ -405,10 +428,14 @@
 				FE11CF542B7111A0002E52A6 /* ReservationViewController.swift in Sources */,
 				FE11CF5B2B73AC23002E52A6 /* AlertMessage.swift in Sources */,
 				FE8135D32B1A2A8B007D91A6 /* RoundStepper.swift in Sources */,
-				FE11CF592B7111CA002E52A6 /* ReservationModel.swift in Sources */,
+				FE11CF652B750E7C002E52A6 /* ReservationModel.swift in Sources */,
+				FE11CF592B7111CA002E52A6 /* Reservation.swift in Sources */,
 				FE6754192ADEAC9C0079C15E /* AppDelegate.swift in Sources */,
+				FE11CF612B74D9D2002E52A6 /* ReservationsListsPresenter.swift in Sources */,
 				FE9A79A92ADECF5900946AA7 /* UserModel.swift in Sources */,
 				FE9A79A72ADECE5F00946AA7 /* StyledButton.swift in Sources */,
+				FE11CF5F2B74D9B9002E52A6 /* ReservationsListViewController.swift in Sources */,
+				FE11CF632B74DA05002E52A6 /* Components.swift in Sources */,
 				FE89377E2AF3F479001FDD6F /* ExtensionHomeViewController.swift in Sources */,
 				FE8F2B432AFAA27300438ACA /* ErrorMessage.swift in Sources */,
 				FE9A79BD2AE12DAF00946AA7 /* LoginModel.swift in Sources */,
@@ -424,6 +451,7 @@
 				FE9A79B92AE12A5D00946AA7 /* LoginViewController.swift in Sources */,
 				FE8F4CF72AFBDB4D0030DF41 /* UserViewControllerExtensions.swift in Sources */,
 				FE8937802AF41501001FDD6F /* SignUpPresenter.swift in Sources */,
+				FE11CF672B752C7C002E52A6 /* ReservationTableViewCell.swift in Sources */,
 				FEEBEBCC2AF3E5C000BA226E /* ExtensionSignUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

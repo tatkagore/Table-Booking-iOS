@@ -10,7 +10,7 @@ import Foundation
 // Protocol to define methods for the presenter
 protocol ReservationPresenter {
     func bind(displayer: ReservationDisplayer)
-    func didTapReserve(with model: ReservationModel)
+    func didTapReserve(with model: Reservation)
     var delegate: ReservationPresenterDelegate? { get set }
 }
 class ReservationPresenterImpl: ReservationPresenter {
@@ -21,7 +21,7 @@ class ReservationPresenterImpl: ReservationPresenter {
         self.displayer = displayer
     }
 
-    func didTapReserve(with model: ReservationModel) {
+    func didTapReserve(with model: Reservation) {
         // Construct a URL for the reservation endpoint
         guard let url = URL(string: "http://localhost:3000/api/reservation") else {
             let error = NSError(domain: "NetworkErrorDomain", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid server URL"])

@@ -16,7 +16,7 @@ protocol ReservationPresenterDelegate: AnyObject {
 }
 
 class ReservationViewController: UIViewController, ReservationDisplayer{
-    var reservation: ReservationModel?
+    var reservation: Reservation?
     var user: UserModel?
     let customAlert = MyAlert()
     
@@ -145,7 +145,7 @@ class ReservationViewController: UIViewController, ReservationDisplayer{
             return
         }
         
-        let reservationModel = ReservationModel(
+        let reservationModel = Reservation(
             date: selectedDate,
             numberOfGuests: numberOfGuests,
             note: note,

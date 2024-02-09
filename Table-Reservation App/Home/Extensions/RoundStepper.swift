@@ -36,7 +36,7 @@ class RoundStepper: UIControl {
     let stepValue: Double
   }
 
-  private (set) var value: Double = 0
+  private (set) var value: Double = 1
   private let viewData: ViewData
 
   init(viewData: ViewData) {
