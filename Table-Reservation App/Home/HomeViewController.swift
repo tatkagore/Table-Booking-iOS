@@ -97,6 +97,7 @@ class HomeViewController: UIViewController, HomePresenterDelegate {
         let userProfileViewController = UserProfileViewController()
         let reservationsListViewController = ReservationsListViewController()
         userProfileViewController.user = user
+        reservationsListViewController.user = user
         navigationController?.pushViewController(reservationsListViewController, animated: true)
 //        navigationController?.pushViewController(userProfileViewController, animated: true)
         //self.present(UINavigationController(rootViewController: userProfileViewController), animated: true, completion: nil)

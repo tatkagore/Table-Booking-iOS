@@ -78,8 +78,10 @@ class UserPresenterImpl: UserPresenter {
                 // Parse the JSON response
                 let responseJSON = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
                 if let userJSON = responseJSON?["user"] as? [String: Any] {
-                    // Parse the user data
+
                     if let user = UserModel(jsonData: userJSON) {
+                        ////        DispatchQueue.main.async { [weak self] in
+                        //                        DispatchQueue.main.async {} to make all uievents into main thread
                         displayer?.updateSuccessful(with: user)
                         displayer?.showMessageSuccessful(with: "Update is Successful")
                     } else {
@@ -89,13 +91,10 @@ class UserPresenterImpl: UserPresenter {
 
                     displayer?.updateFailed(with: APIError.unknownError)
                 }
-
-
             } catch {
                 displayer?.updateFailed(with: APIError.unknownError)
             }
         }
-
         task.resume()
     }
 

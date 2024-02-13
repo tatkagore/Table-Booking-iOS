@@ -159,11 +159,10 @@
 		FE11CF5D2B74D991002E52A6 /* ReservationsList */ = {
 			isa = PBXGroup;
 			children = (
+				FEB685572B7BAC49009C4184 /* Extensions */,
 				FE11CF5E2B74D9B9002E52A6 /* ReservationsListViewController.swift */,
 				FE11CF602B74D9D2002E52A6 /* ReservationsListsPresenter.swift */,
-				FE11CF622B74DA05002E52A6 /* Components.swift */,
 				FE11CF642B750E7C002E52A6 /* ReservationModel.swift */,
-				FE11CF662B752C7C002E52A6 /* ReservationTableViewCell.swift */,
 			);
 			path = ReservationsList;
 			sourceTree = "<group>";
@@ -280,6 +279,15 @@
 				FE11CF512B6BC309002E52A6 /* InformationCardView.swift */,
 			);
 			path = UIElements;
+			sourceTree = "<group>";
+		};
+		FEB685572B7BAC49009C4184 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FE11CF662B752C7C002E52A6 /* ReservationTableViewCell.swift */,
+				FE11CF622B74DA05002E52A6 /* Components.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		FEEBEBC42AF281AF00BA226E /* Home */ = {

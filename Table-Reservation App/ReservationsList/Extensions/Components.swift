@@ -9,8 +9,6 @@ import Foundation
 import SwiftUI
 
 class UserCardView: UIView {
-
-    // UI Components
     private let imageView = UIImageView()
     private let nameLabel = UILabel()
     private let emailLabel = UILabel()
@@ -27,8 +25,7 @@ class UserCardView: UIView {
     }
 
     private func setupView() {
-        // Card view style
-        self.backgroundColor = .white
+        self.backgroundColor = .myBlue
         self.layer.cornerRadius = 10
         self.layer.shadowOpacity = 0.2
         self.layer.shadowRadius = 4
@@ -51,7 +48,8 @@ class UserCardView: UIView {
 
         nameLabel.font = UIFont.boldSystemFont(ofSize: 16)
         emailLabel.font = UIFont.systemFont(ofSize: 14)
-        emailLabel.textColor = .gray
+        emailLabel.textColor = .white
+        nameLabel.textColor = .white
 
         stackView.addArrangedSubview(nameLabel)
         stackView.addArrangedSubview(emailLabel)
@@ -79,15 +77,5 @@ class UserCardView: UIView {
         nameLabel.text = name
         emailLabel.text = email
         imageView.image = image
-    }
-}
-
-extension UIView {
-    func tableViewConstraints(to superView: UIView) {
-        translatesAutoresizingMaskIntoConstraints = false
-        topAnchor.constraint(equalTo: superView.topAnchor).isActive = true
-        leadingAnchor.constraint(equalTo: superView.leadingAnchor, constant: 20).isActive = true
-        trailingAnchor.constraint(equalTo: superView.trailingAnchor, constant: -20).isActive = true
-        bottomAnchor.constraint(equalTo: superView.bottomAnchor).isActive = true
     }
 }

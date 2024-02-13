@@ -26,6 +26,7 @@ class UserProfileViewController: UIViewController {
     // MARK: - Properties
 
     var user: UserModel?
+    //
     var presenter: UserPresenter = UserPresenterImpl()
 
     let serverResponceLabel: UILabel = {
@@ -157,15 +158,11 @@ class UserProfileViewController: UIViewController {
 extension UserProfileViewController: UserProfileDisplayer {
 
     func updateSuccessful(with user: UserModel) {
-        DispatchQueue.main.async { [weak self] in
-            self?.user = user
-        }
+            self.user = user
     }
 
     func updateFailed(with error: Error) {
-        DispatchQueue.main.async { [weak self] in
-            self?.showMessageFail(with: "Update failed")
-        }
+            self.showMessageFail(with: "Update failed")
     }
 
     func showMessageSuccessful(with message: String) {

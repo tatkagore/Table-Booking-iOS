@@ -104,7 +104,7 @@ class ReservationViewController: UIViewController, ReservationDisplayer{
         view.backgroundColor = .systemBackground
         // Custom title view
         let titleLabel = UILabel()
-        titleLabel.text = "please fill the form"
+        titleLabel.text = "Please fill the form"
         titleLabel.font = UIFont.systemFont(ofSize: 18)
         titleLabel.sizeToFit()
         navigationItem.titleView = titleLabel
