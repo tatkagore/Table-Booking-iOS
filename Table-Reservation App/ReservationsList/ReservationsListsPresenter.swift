@@ -9,7 +9,7 @@ import Foundation
 
 protocol ReservationsListPresenter {
     func bind(displayer: ReservationsListDisplayer)
-    func fetchCurrentReservations()
+    func onViewDidLoad()
     var delegate: ReservationsListPresenterDelegate? { get set }
 }
 
@@ -21,7 +21,7 @@ class ReservationsListsPresenterImpl: ReservationsListPresenter {
         self.displayer = displayer
     }
 
-    func fetchCurrentReservations() {
+    func onViewDidLoad() {
         // Construct a URL for the Reservations endpoint
 
         guard let url = URL(string: "http://localhost:3000/api/reservation/me") else {

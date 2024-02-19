@@ -36,13 +36,13 @@ class ReservationsListViewController: UIViewController {
         return titleLabel
     }()
 
-//    var profileButton: StyledButton = {
-//        let button = StyledButton(type: .system)
-//        button.setTitle("Let's Book!", for: .normal)
-//        button.addTarget(self, action: #selector(userProfileButtonTapped), for: .touchUpInside)
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        return button
-//    }()
+    var profileButton: StyledButton = {
+        let button = StyledButton(type: .system)
+        button.setTitle("go", for: .normal)
+        button.addTarget(self, action: #selector(userProfileButtonTapped), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
 
 
     var reservations: [ReservationModel] = []
@@ -54,30 +54,10 @@ class ReservationsListViewController: UIViewController {
 
         presenter.bind(displayer: self)
         configureUserCardView()
+        configureButton()
         configureTableView()
-        presenter.fetchCurrentReservations()
+        presenter.onViewDidLoad()
 
-    }
-
-    func configureTableView() {
-        view.addSubview(tableView)
-        setTableViewDelegates()
-        tableView.backgroundColor = UIColor.systemBackground
-        tableView.rowHeight = 90
-        tableView.separatorStyle = .none
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: userCardView.bottomAnchor, constant: 20),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
-    }
-
-    func setTableViewDelegates(){
-        tableView.delegate = self
-        tableView.dataSource = self
     }
 
     private func configureUserCardView() {
@@ -93,12 +73,46 @@ class ReservationsListViewController: UIViewController {
         ])
     }
 
+    private func configureButton(){
+        view.addSubview(profileButton)
+
+        NSLayoutConstraint.activate([
+            profileButton.topAnchor.constraint(equalTo: userCardView.bottomAnchor, constant: 20),
+            profileButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            profileButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            profileButton.heightAnchor.constraint(equalToConstant: 80)
+        ])
+    }
+
+    func configureTableView() {
+        view.addSubview(tableView)
+        setTableViewDelegates()
+        tableView.backgroundColor = UIColor.systemBackground
+        tableView.rowHeight = 90
+        tableView.separatorStyle = .none
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: profileButton.bottomAnchor, constant: 20),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
+
+    func setTableViewDelegates(){
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+
 
     @objc func userProfileButtonTapped() {
         let userProfileViewController = UserProfileViewController()
         userProfileViewController.user = user
         navigationController?.pushViewController(userProfileViewController, animated: true)
     }
+
+
 }
 
 extension ReservationsListViewController: ReservationsListDisplayer {
