@@ -166,10 +166,11 @@ extension UserProfileViewController: UserProfileDisplayer {
     }
 
     func showMessageSuccessful(with message: String) {
-        serverResponceLabel.text = message
-        serverResponceLabel.isHidden = false
-        serverResponceLabel.textColor = UIColor.myGreen
-
+        DispatchQueue.main.async {
+            self.serverResponceLabel.text = message
+            self.serverResponceLabel.isHidden = false
+            self.serverResponceLabel.textColor = UIColor.myGreen
+        }
     }
     func showMessageFail(with message: String) {
         serverResponceLabel.text = message
