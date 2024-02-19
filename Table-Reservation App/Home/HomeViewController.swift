@@ -94,13 +94,9 @@ class HomeViewController: UIViewController, HomePresenterDelegate {
     }
 
     @objc func userProfileButtonTapped() {
-        let userProfileViewController = UserProfileViewController()
-        let reservationsListViewController = ReservationsListViewController()
-        userProfileViewController.user = user
-        reservationsListViewController.user = user
-        navigationController?.pushViewController(reservationsListViewController, animated: true)
-//        navigationController?.pushViewController(userProfileViewController, animated: true)
-        //self.present(UINavigationController(rootViewController: userProfileViewController), animated: true, completion: nil)
+        let presenter = ReservationsListsPresenterImpl(navigationController: self.navigationController!)
+        let reservationsListViewController = ReservationsListViewController(presenter: presenter, user: user)
+        self.navigationController?.pushViewController(reservationsListViewController, animated: true)
     }
 
     @objc func reserveButtonTapped() {

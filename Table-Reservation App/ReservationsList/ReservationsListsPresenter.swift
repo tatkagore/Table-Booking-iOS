@@ -5,7 +5,7 @@
 //  Created by Tatiana Simmer on 08/02/2024.
 //
 
-import Foundation
+import UIKit
 
 protocol ReservationsListPresenter {
     func bind(displayer: ReservationsListDisplayer)
@@ -14,8 +14,13 @@ protocol ReservationsListPresenter {
 }
 
 class ReservationsListsPresenterImpl: ReservationsListPresenter {
-    weak var delegate: ReservationsListPresenterDelegate?
+    let navigationController: UINavigationController
     weak var displayer: ReservationsListDisplayer?
+    weak var delegate: ReservationsListPresenterDelegate?
+
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
+    }
 
     func bind(displayer: ReservationsListDisplayer) {
         self.displayer = displayer

@@ -18,9 +18,21 @@ protocol ReservationsListPresenterDelegate: AnyObject {
 }
 
 class ReservationsListViewController: UIViewController {
-    let presenter: ReservationsListPresenter = ReservationsListsPresenterImpl()
-    private let userCardView = UserCardView()
+    let presenter: ReservationsListPresenter
     var user: UserModel?
+
+    init(presenter: ReservationsListPresenter, user: UserModel? = nil) {
+        self.presenter = presenter
+        self.user = user
+        super.init(nibName: nil, bundle: nil)
+
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private let userCardView = UserCardView()
 
     private let tableView: UITableView = {
         let tableView = UITableView()
