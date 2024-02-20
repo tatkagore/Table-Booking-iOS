@@ -12,6 +12,7 @@ protocol ReservationsListDisplayer: AnyObject {
     func showReservations(_ reservations: [ReservationModel])
     func showError(_ error: Error)
     func fetchedUser(with user: UserModel)
+    func taskDeletedSuccessfully()
 }
 
 protocol ReservationsListPresenterDelegate: AnyObject {
@@ -27,11 +28,11 @@ class ReservationsListViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
 
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     private let userCardView = UserCardView()
 
     private let tableView: UITableView = {
@@ -50,7 +51,7 @@ class ReservationsListViewController: UIViewController {
 
     var profileButton: StyledButton = {
         let button = StyledButton(type: .system)
-        button.setTitle("go", for: .normal)
+        button.setTitle("Profile view", for: .normal)
         button.addTarget(self, action: #selector(userProfileButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -64,12 +65,18 @@ class ReservationsListViewController: UIViewController {
         view.backgroundColor = .systemBackground
         navigationItem.titleView = titleLabel
 
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshReservations(_:)), name: Notification.Name(rawValue: "refreshReservations"), object: nil)
+
         presenter.bind(displayer: self)
         configureUserCardView()
         configureButton()
         configureTableView()
         presenter.onViewDidLoad()
 
+    }
+
+    @objc func refreshReservations(_ notification: Notification) {
+        self.presenter.fetchReservationsOfCurrentUser()
     }
 
     private func configureUserCardView() {
@@ -143,6 +150,9 @@ extension ReservationsListViewController: ReservationsListDisplayer {
             self?.tableView.reloadData()
         }
     }
+    func taskDeletedSuccessfully() {
+        print("Deleted Successfully")
+    }
 
     func showError(_ error: Error) {
         print(error)
@@ -154,12 +164,44 @@ extension ReservationsListViewController: UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return reservations.count
     }
-    
+
     // What cells to show? as -> ReservationTableViewCell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ReservationTableViewCell.identifier, for: indexPath) as! ReservationTableViewCell
         let reservation = reservations[indexPath.row]
         cell.configure(with: reservation)
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteHandler: (UIContextualAction, UIView, @escaping (Bool) -> Void) -> Void = {[weak self] _,_, completion in
+            guard let reservation = self?.reservations[indexPath.row] else {
+                return
+            }
+            // Create an alert
+            let alert = UIAlertController(title: "Delete Reservation", message: "Are you sure you want to delete this reservation?", preferredStyle: .alert)
+
+            // Add a "Cancel" action
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+                completion(false)
+            }))
+
+            // Add a "Delete" action
+            alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { _ in
+                // notify presenter about action 'delete'
+                self?.presenter.deleteReservation(with: reservation)
+                completion(true)
+            }))
+
+            // Present the alert
+            self?.present(alert, animated: true, completion: nil)
+        }
+
+        let delete = UIContextualAction(style: .destructive, title: "Delete", handler: deleteHandler)
+        let actions: [UIContextualAction] = [delete]
+
+        let swipeAction = UISwipeActionsConfiguration(actions: actions)
+
+        return swipeAction
     }
 }

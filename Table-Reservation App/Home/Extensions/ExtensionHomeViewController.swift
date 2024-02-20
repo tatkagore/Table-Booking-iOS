@@ -43,8 +43,8 @@ extension HomeViewController {
 
             userProfileButton.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: -5),
             userProfileButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            userProfileButton.widthAnchor.constraint(equalToConstant: 55),
-            userProfileButton.heightAnchor.constraint(equalToConstant: 55),
+            userProfileButton.widthAnchor.constraint(equalToConstant: 90),
+            userProfileButton.heightAnchor.constraint(equalToConstant: 90),
 
             stackView1.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 10),
             stackView1.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),

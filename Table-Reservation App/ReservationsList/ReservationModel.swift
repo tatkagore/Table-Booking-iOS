@@ -43,3 +43,7 @@ extension ReservationModel {
 struct ReservationsResponse: Codable {
     let reservations: [ReservationModel]
 }
+
+struct DeletionResponse: Codable {
+    let message: String
+}
