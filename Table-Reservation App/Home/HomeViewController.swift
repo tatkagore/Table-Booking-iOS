@@ -50,7 +50,7 @@ class HomeViewController: UIViewController, HomePresenterDelegate {
     var userProfileButton: profileButton = {
         let button = profileButton()
         // Set the image for the button
-        let buttonImage = UIImage(named: "NEW")
+        let buttonImage = UIImage(named: "New")
         button.setImage(buttonImage, for: .normal)
         button.addTarget(self, action: #selector(userProfileButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
