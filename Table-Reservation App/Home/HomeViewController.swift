@@ -50,7 +50,7 @@ class HomeViewController: UIViewController, HomePresenterDelegate {
     var userProfileButton: profileButton = {
         let button = profileButton()
         // Set the image for the button
-        let buttonImage = UIImage(named: "avatar")
+        let buttonImage = UIImage(named: "New")
         button.setImage(buttonImage, for: .normal)
         button.addTarget(self, action: #selector(userProfileButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -94,13 +94,9 @@ class HomeViewController: UIViewController, HomePresenterDelegate {
     }
 
     @objc func userProfileButtonTapped() {
-        let userProfileViewController = UserProfileViewController()
-        let reservationsListViewController = ReservationsListViewController()
-        userProfileViewController.user = user
-        reservationsListViewController.user = user
-        navigationController?.pushViewController(reservationsListViewController, animated: true)
-//        navigationController?.pushViewController(userProfileViewController, animated: true)
-        //self.present(UINavigationController(rootViewController: userProfileViewController), animated: true, completion: nil)
+        let presenter = ReservationsListsPresenterImpl(navigationController: self.navigationController!)
+        let reservationsListViewController = ReservationsListViewController(presenter: presenter, user: user)
+        self.navigationController?.pushViewController(reservationsListViewController, animated: true)
     }
 
     @objc func reserveButtonTapped() {
