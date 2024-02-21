@@ -106,16 +106,15 @@ class ReservationsListsPresenterImpl: ReservationsListPresenter {
             guard let self = self else { return }
 
             if let error = error {
-                print(error)
-                DispatchQueue.main.async {
-                    self.displayer?.showError(error)
+                DispatchQueue.main.async { [weak self] in
+                    self?.displayer?.showError(error)
                 }
                 return
             }
 
             guard let data = data else {
-                DispatchQueue.main.async {
-                    self.displayer?.showError(APIError.invalidData)
+                DispatchQueue.main.async { [weak self] in
+                    self?.displayer?.showError(APIError.invalidData)
                 }
                 return
             }
@@ -125,20 +124,17 @@ class ReservationsListsPresenterImpl: ReservationsListPresenter {
                 decoder.dateDecodingStrategy = .iso8601
                 let deletionResponse = try decoder.decode(DeletionResponse.self, from: data)
                 if deletionResponse.message == "Reservation deleted." {
-                    DispatchQueue.main.async {
-                        self.displayer?.taskDeletedSuccessfully()
-                        NotificationCenter.default.post(name: Notification.Name(rawValue: "refreshReservations"), object: nil)
-                    }
+                    self.fetchReservationsOfCurrentUser()
                 } else {
-                    DispatchQueue.main.async {
-                        self.displayer?.showError(APIError.unknownError )
+                    DispatchQueue.main.async { [weak self] in
+                        self?.displayer?.showError(APIError.unknownError )
                     }
                 }
             }
             catch {
                 print("Unexpected error: \(error).")
-                DispatchQueue.main.async {
-                    self.displayer?.showError(APIError.authenticationError)
+                DispatchQueue.main.async { [weak self] in
+                    self?.displayer?.showError(APIError.authenticationError)
                 }
             }
         }
