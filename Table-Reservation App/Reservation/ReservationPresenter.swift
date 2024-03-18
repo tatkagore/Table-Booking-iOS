@@ -75,7 +75,7 @@ class ReservationPresenterImpl: ReservationPresenter {
             do {
                 // Parse the JSON response
                 let responseJSON = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-                if let authToken = responseJSON?["reservation"] as? [String: Any] {
+                if let idCreated = responseJSON?["id"] as? Int {
                     delegate?.reservationSuccessful()
                 } else {
                     let error = NSError(domain: "ReservationErrorDomain", code: 400, userInfo: [NSLocalizedDescriptionKey: "Invalid response from the server"])

@@ -63,9 +63,10 @@ class ReservationsListsPresenterImpl: ReservationsListPresenter {
             }
             do {
                 // Parse the JSON response
-                let jsonData = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                let jsonData = try JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]]
 
-                if let jsonData = jsonData?["reservations"] as? [[String: Any]] {
+                if let jsonData = jsonData
+                {
                     var reservations = [ReservationModel]()
                     for reservationDict in jsonData {
                         if let reservation = ReservationModel(jsonData: reservationDict) {
