@@ -54,6 +54,16 @@ class ReservationsListViewController: UIViewController {
         return button
     }()
 
+    var yourBookingsLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Your bookings"
+        label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        label.textColor = UIColor.myBlue
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
     var reservations: [ReservationModel] = []
 
     override func viewDidLoad() {
@@ -65,6 +75,7 @@ class ReservationsListViewController: UIViewController {
         configureUserCardView()
         configureButton()
         configureTableView()
+        setUpConstraints()
         presenter.onViewDidLoad()
     }
 
@@ -82,16 +93,6 @@ class ReservationsListViewController: UIViewController {
     }
 
     private func configureButton() {
-        view.addSubview(myAccountButton)
-
-        myAccountButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            myAccountButton.topAnchor.constraint(equalTo: userCardView.bottomAnchor, constant: 20),
-            myAccountButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            myAccountButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            myAccountButton.heightAnchor.constraint(equalToConstant: 80)
-        ])
-
         // Set the callback
         myAccountButton.onRightButtonTapped = { [weak self] in
             guard let self = self, let user = self.user else { return }
@@ -102,6 +103,30 @@ class ReservationsListViewController: UIViewController {
         }
     }
 
+    // MARK: - Auto Layout
+
+    private func setUpConstraints() {
+        view.addSubview(tableView)
+        view.addSubview(myAccountButton)
+        view.addSubview(yourBookingsLabel)
+        myAccountButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            myAccountButton.topAnchor.constraint(equalTo: userCardView.bottomAnchor, constant: 20),
+            myAccountButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            myAccountButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            myAccountButton.heightAnchor.constraint(equalToConstant: 80),
+
+            yourBookingsLabel.topAnchor.constraint(equalTo: myAccountButton.bottomAnchor, constant: 20),
+            yourBookingsLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            yourBookingsLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+
+            tableView.topAnchor.constraint(equalTo: yourBookingsLabel.bottomAnchor, constant: 20),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ])
+    }
+
     func configureTableView() {
         view.addSubview(tableView)
         setTableViewDelegates()
@@ -109,13 +134,6 @@ class ReservationsListViewController: UIViewController {
         tableView.rowHeight = 90
         tableView.separatorStyle = .none
         tableView.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: myAccountButton.bottomAnchor, constant: 20),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
     }
 
     func setTableViewDelegates(){
