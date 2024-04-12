@@ -12,7 +12,19 @@ extension UserProfileViewController {
     // MARK: - Auto Layout
 
     func setUpConstraints() {
-        // Create a stack view to stack the text fields and the "Update" button vertically
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(scrollView)
+
+        let contentView = UIView()
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.addSubview(contentView)
+
+        let stackTopView = UIStackView(arrangedSubviews: [userImageView])
+        stackTopView.axis = .vertical
+        stackTopView.spacing = 10
+        stackTopView.translatesAutoresizingMaskIntoConstraints = false
+
         let stackView = UIStackView(arrangedSubviews: [firstNameTextField, lastNameTextField, emailTextField, passwordTextField, phoneNumberTextField, updateAccountButton])
         stackView.axis = .vertical
         stackView.spacing = 20
@@ -23,30 +35,51 @@ extension UserProfileViewController {
         bottomStackView.spacing = 20
         bottomStackView.translatesAutoresizingMaskIntoConstraints = false
 
-        view.addSubview(bottomStackView)
-        view.addSubview(stackView)
-        view.addSubview(serverResponceLabel)
+        contentView.addSubview(stackTopView)
+        contentView.addSubview(stackView)
+        contentView.addSubview(serverResponceLabel)
+        contentView.addSubview(bottomStackView)
 
+        let namesContainerView = UIView()
+        namesContainerView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(namesContainerView)
+
+        namesContainerView.addSubview(nameLabel)
 
         NSLayoutConstraint.activate([
-            // Center the stack view vertically
-            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            // Center the stack view horizontally
-            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
-            serverResponceLabel.topAnchor.constraint(equalTo: updateAccountButton.bottomAnchor, constant: 16),
-            serverResponceLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
 
-            // Center the stack view horizontally
-            bottomStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            bottomStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            bottomStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            bottomStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30)
+            userImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+            userImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            userImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            userImageView.widthAnchor.constraint(equalToConstant: 100), 
+            userImageView.heightAnchor.constraint(equalToConstant: 56),
 
+            nameLabel.topAnchor.constraint(equalTo: userImageView.bottomAnchor, constant: 10),
+            nameLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+
+            stackView.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 20),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            
+
+            serverResponceLabel.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 20),
+            serverResponceLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            serverResponceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+
+            bottomStackView.topAnchor.constraint(equalTo: serverResponceLabel.bottomAnchor, constant: 20),
+            bottomStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            bottomStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            bottomStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -30),
         ])
     }
 }
-
-

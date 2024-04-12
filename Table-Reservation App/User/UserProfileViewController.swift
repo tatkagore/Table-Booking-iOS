@@ -37,6 +37,28 @@ class UserProfileViewController: UIViewController {
         return label
     }()
 
+    let userImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(named: "avatar")
+        imageView.contentMode = .scaleAspectFit
+
+        return imageView
+    }()
+
+
+    var nameLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Your name"
+        label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        label.textColor = UIColor.myBlue
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+
+
     let firstNameTextField: StyledTextField = {
         let textField = StyledTextField()
         textField.placeholder = "Update Your First Name"
@@ -97,17 +119,10 @@ class UserProfileViewController: UIViewController {
         view.backgroundColor = .systemBackground
         title = "Profile"
         view.backgroundColor = .systemBackground
-        view.addSubview(firstNameTextField)
-        view.addSubview(lastNameTextField)
-        view.addSubview(emailTextField)
-        view.addSubview(passwordTextField)
-        view.addSubview(phoneNumberTextField)
-        view.addSubview(updateAccountButton)
-        view.addSubview(serverResponceLabel)
-        view.addSubview(logOutButton)
 
         presenter.bind(displayer: self)
         setUpConstraints()
+        nameLabel.text = "\(self.user?.firstName ?? "UserName") \(self.user?.lastName ?? "Surname")"
         firstNameTextField.text = self.user?.firstName
         lastNameTextField.text = self.user?.lastName
         emailTextField.text = self.user?.email
