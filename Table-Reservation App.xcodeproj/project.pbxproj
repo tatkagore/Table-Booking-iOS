@@ -42,6 +42,8 @@
 		FE9A79BD2AE12DAF00946AA7 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9A79BC2AE12DAF00946AA7 /* LoginModel.swift */; };
 		FE9A79BF2AE12DF800946AA7 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9A79BE2AE12DF800946AA7 /* UserProfileViewController.swift */; };
 		FE9A79C12AE12E1500946AA7 /* UserPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9A79C02AE12E1500946AA7 /* UserPresenter.swift */; };
+		FEEBC9042BF2171D00795253 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEEBC9022BF216F200795253 /* MapKit.framework */; };
+		FEEBC9082BF217AF00795253 /* MapKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEBC9072BF217AF00795253 /* MapKitView.swift */; };
 		FEEBEBC62AF3D84700BA226E /* StyledTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEBEBC52AF3D84700BA226E /* StyledTextField.swift */; };
 		FEEBEBC92AF3E43800BA226E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEBEBC82AF3E43800BA226E /* SignUpViewController.swift */; };
 		FEEBEBCC2AF3E5C000BA226E /* ExtensionSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEBEBCB2AF3E5C000BA226E /* ExtensionSignUpViewController.swift */; };
@@ -96,6 +98,8 @@
 		FE9A79BC2AE12DAF00946AA7 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		FE9A79BE2AE12DF800946AA7 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		FE9A79C02AE12E1500946AA7 /* UserPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPresenter.swift; sourceTree = "<group>"; };
+		FEEBC9022BF216F200795253 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		FEEBC9072BF217AF00795253 /* MapKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitView.swift; sourceTree = "<group>"; };
 		FEEBEBC52AF3D84700BA226E /* StyledTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledTextField.swift; sourceTree = "<group>"; };
 		FEEBEBC82AF3E43800BA226E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		FEEBEBCB2AF3E5C000BA226E /* ExtensionSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionSignUpViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEEBC9042BF2171D00795253 /* MapKit.framework in Frameworks */,
 				FE8F2B3D2AF53BCE00438ACA /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -243,6 +248,7 @@
 				FE8F2B422AFAA27300438ACA /* ErrorMessage.swift */,
 				FE8135D22B1A2A8B007D91A6 /* RoundStepper.swift */,
 				FE8135D42B1A2FA0007D91A6 /* Color.swift */,
+				FEEBC9072BF217AF00795253 /* MapKitView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -258,6 +264,7 @@
 		FE8F2B3B2AF53BCD00438ACA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FEEBC9022BF216F200795253 /* MapKit.framework */,
 				FE8F2B3C2AF53BCE00438ACA /* Security.framework */,
 			);
 			name = Frameworks;
@@ -460,6 +467,7 @@
 				FE8F4CF72AFBDB4D0030DF41 /* UserViewControllerExtensions.swift in Sources */,
 				FE8937802AF41501001FDD6F /* SignUpPresenter.swift in Sources */,
 				FE11CF672B752C7C002E52A6 /* ReservationTableViewCell.swift in Sources */,
+				FEEBC9082BF217AF00795253 /* MapKitView.swift in Sources */,
 				FEEBEBCC2AF3E5C000BA226E /* ExtensionSignUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
