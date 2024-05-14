@@ -20,7 +20,7 @@ extension HomeViewController {
                 // Add a pin to the map
                 let annotation = MKPointAnnotation()
                 annotation.coordinate = location.coordinate
-                annotation.title = "Restaurant Location"
+                annotation.title = "Kozy Restaurant"
                 self?.mapView.addAnnotation(annotation)
             }
         }
