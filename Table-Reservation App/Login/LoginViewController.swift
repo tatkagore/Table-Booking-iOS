@@ -26,7 +26,7 @@ class LoginViewController: UIViewController, LoginDisplayer {
         label.text = "Welcome back!"
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 24)
-        label.textColor = UIColor.myBlue
+        label.textColor = UIColor.myGreen
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -76,7 +76,7 @@ class LoginViewController: UIViewController, LoginDisplayer {
     let signUpButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Sign Up", for: .normal)
-        button.setTitleColor(UIColor.myBlue, for: .normal)
+        button.setTitleColor(UIColor.myGreen, for: .normal)
         button.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button

@@ -23,7 +23,7 @@ class StyledTextField: UITextField {
     private func setupStyle() {
         self.backgroundColor = .white
         self.layer.cornerRadius = 5.0 // Add rounded corners with a radius of 10
-        self.layer.borderColor = UIColor(hex: "0077B6").cgColor // Set border color
+        self.layer.borderColor = UIColor(hex: "006400").cgColor // Set border color
         self.layer.borderWidth = 1.0 // Set border width
         self.font = UIFont(name: "Helvetica", size: 16) // Set font
         self.textColor = .black // Set text color

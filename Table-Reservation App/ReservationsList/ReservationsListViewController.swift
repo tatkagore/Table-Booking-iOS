@@ -59,7 +59,7 @@ class ReservationsListViewController: UIViewController {
         label.text = "Your bookings"
         label.textAlignment = .left
         label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        label.textColor = UIColor.myBlue
+        label.textColor = UIColor.myGreen
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

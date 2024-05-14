@@ -47,7 +47,7 @@ class MyAlert {
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: alertView.frame.size.width, height: 80))
         titleLabel.text = title
         titleLabel.textAlignment = .center
-        titleLabel.textColor = UIColor.myBlue
+        titleLabel.textColor = UIColor.myGreen
         alertView.addSubview(titleLabel)
 
         let messageLabel = UILabel(frame: CGRect(x: 0, y: 80, width: alertView.frame.size.width, height: 80))

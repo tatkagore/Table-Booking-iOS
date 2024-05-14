@@ -21,7 +21,7 @@ class StyledButton: UIButton {
     private func setStyle() {
 
         self.setTitleColor(.white, for: .normal)
-        self.backgroundColor = UIColor(hex: "334195") // Set background color to #E9C46A
+        self.backgroundColor = UIColor(hex: "006400") // Set background color to #E9C46A
         self.layer.cornerRadius = 5.0 // Add rounded corners with a radius of 10
         self.layer.borderColor = UIColor(hex: "334195").cgColor // Set border color to #F4A261
         self.layer.borderWidth = 1.0 // Increase border width
