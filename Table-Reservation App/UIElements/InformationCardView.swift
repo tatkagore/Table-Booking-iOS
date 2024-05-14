@@ -45,7 +45,7 @@ class RestaurantCardView: UIView {
     }
 
     private func configureLabels() {
-        nameLabel.text = "Cossy"
+        nameLabel.text = "Kozy"
         nameLabel.font = UIFont.boldSystemFont(ofSize: 20)
         nameLabel.textColor = UIColor.myBlue
 
@@ -75,13 +75,9 @@ class RestaurantCardView: UIView {
     }
 
     private func setupConstraints() {
-        // Disable autoresizing masks for all subviews
         subviews.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
 
         NSLayoutConstraint.activate([
-            // Set constraints for nameLabel, ratingLabel, cuisineLabel, addressLabel
-            // Set constraints for starIconView, pinIconView
-            // Example:
             nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16),
             nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),

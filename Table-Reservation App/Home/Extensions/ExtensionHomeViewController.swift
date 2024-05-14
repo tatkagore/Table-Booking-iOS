@@ -26,6 +26,7 @@ extension HomeViewController {
         contentView.addSubview(restaurantCardView)
         contentView.addSubview(reserveButton)
         contentView.addSubview(userProfileButton)
+        contentView.addSubview(mapView)
 
         NSLayoutConstraint.activate([
 
@@ -59,8 +60,14 @@ extension HomeViewController {
             restaurantCardView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             restaurantCardView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
 
+            mapView.topAnchor.constraint(equalTo: restaurantCardView.bottomAnchor, constant: 20),
+            mapView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            mapView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            mapView.heightAnchor.constraint(equalTo: restaurantCardView.heightAnchor),
+
+
             //            reserveButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            reserveButton.topAnchor.constraint(equalTo: restaurantCardView.bottomAnchor, constant: 20),
+            reserveButton.topAnchor.constraint(equalTo:  mapView.bottomAnchor, constant: 20),
             reserveButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             reserveButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             //            reserveButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -30)

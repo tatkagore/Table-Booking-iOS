@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MapKit
 
 protocol HomeDisplayer: AnyObject {
     func showUser(_ user: UserModel)
@@ -15,7 +16,16 @@ protocol HomeDisplayer: AnyObject {
 protocol HomePresenterDelegate: AnyObject {
 }
 
-class HomeViewController: UIViewController, HomePresenterDelegate {
+class HomeViewController: UIViewController, HomePresenterDelegate, CLLocationManagerDelegate {
+    var isMapFullScreen = false
+    var originalMapConstraints: [NSLayoutConstraint] = []
+
+    var mapView: MKMapView = {
+        let mapView = MKMapView()
+        mapView.translatesAutoresizingMaskIntoConstraints = false
+        return mapView
+    }()
+
     var presenter: HomePresenter = HomePresenterImpl()
     var restaurantCardView = RestaurantCardView()
     var user: UserModel?
@@ -91,6 +101,9 @@ class HomeViewController: UIViewController, HomePresenterDelegate {
         presenter.bind(displayer: self)
         setUpConstraints()
         presenter.onViewDidLoad()
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(toggleMapSize))
+        mapView.addGestureRecognizer(tapRecognizer)
+        centerMapOnLocation(address: "79 Av. Bosquet, 75007 Paris")
     }
 
     @objc func userProfileButtonTapped() {
