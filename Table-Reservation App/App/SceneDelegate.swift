@@ -12,30 +12,73 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let windowScene = (scene as? UIWindowScene) else { return }
-        let window = UIWindow(windowScene: windowScene)
-        // This is a container view controller that manages a navigation interface, allowing the user to navigate through a hierarchical set of views.
-        let navigationController = UINavigationController()
+           guard let windowScene = (scene as? UIWindowScene) else { return }
 
-        // Check for the presence of a saved token
-        let authManager = KeychainHelper()
+           let window = UIWindow(windowScene: windowScene)
+           let navigationController = UINavigationController()
+           // Check for the presence of a saved token
+           let authManager = KeychainHelper()
 
-        if let savedToken = authManager.getTokenFromKeychain() {
-            // Token exists, user is authenticated
-            let homeViewController = HomeViewController()
-            navigationController.setViewControllers([homeViewController], animated: false)
-        } else {
-            // Token doesn't exist, show login screen
-            let presenter = LoginPresenterImpl(navigationController: navigationController)
-            let loginViewController = LoginViewController(presenter: presenter)
-            navigationController.setViewControllers([loginViewController], animated: false)
-        }
+           if let savedToken = authManager.getTokenFromKeychain() {
+               // Token exists, user is authenticated
+               let tabBarController = MainTabBarController()
+               navigationController.setViewControllers([tabBarController], animated: false)
+           } else {
+               // Token doesn't exist, show login screen
+               let presenter = LoginPresenterImpl(navigationController: navigationController)
+               let loginViewController = LoginViewController(presenter: presenter)
+               navigationController.setViewControllers([loginViewController], animated: false)
+           }
 
-        window.rootViewController = navigationController
-        self.window = window
-        self.window?.makeKeyAndVisible()
-    }
+           window.rootViewController = navigationController
+           self.window = window
+           self.window?.makeKeyAndVisible()
+       }
 
+       func logout() {
+           let navigationController = UINavigationController()
+           let presenter = LoginPresenterImpl(navigationController: navigationController)
+           let loginViewController = LoginViewController(presenter: presenter)
+           navigationController.setViewControllers([loginViewController], animated: false)
+
+           self.window?.rootViewController = navigationController
+       }
+
+//    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+//        guard let windowScene = (scene as? UIWindowScene) else { return }
+//        let window = UIWindow(windowScene: windowScene)
+//        // This is a container view controller that manages a navigation interface, allowing the user to navigate through a hierarchical set of views.
+//        let navigationController = UINavigationController()
+//
+//        // Check for the presence of a saved token
+//        let authManager = KeychainHelper()
+//
+//        if let savedToken = authManager.getTokenFromKeychain() {
+//            // Token exists, user is authenticated
+//            let homeViewController = HomeViewController()
+//            navigationController.setViewControllers([homeViewController], animated: false)
+//        } else {
+//            // Token doesn't exist, show login screen
+//            let presenter = LoginPresenterImpl(navigationController: navigationController)
+//            let loginViewController = LoginViewController(presenter: presenter)
+//            navigationController.setViewControllers([loginViewController], animated: false)
+//        }
+//
+//        window.rootViewController = navigationController
+//        self.window = window
+//        self.window?.makeKeyAndVisible()
+//    }
+//    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+//            guard let windowScene = (scene as? UIWindowScene) else { return }
+//            let window = UIWindow(windowScene: windowScene)
+//
+//            let tabBarController = MainTabBarController() // Use your custom tab bar controller
+//            window.rootViewController = tabBarController
+//            self.window = window
+//            self.window?.makeKeyAndVisible()
+//        }
+
+    
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.

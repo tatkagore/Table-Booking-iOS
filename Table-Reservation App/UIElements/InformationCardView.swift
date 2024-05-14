@@ -47,7 +47,7 @@ class RestaurantCardView: UIView {
     private func configureLabels() {
         nameLabel.text = "Kozy"
         nameLabel.font = UIFont.boldSystemFont(ofSize: 20)
-        nameLabel.textColor = UIColor.myBlue
+        nameLabel.textColor = UIColor.myGreen
 
         ratingLabel.text = "4.8 (5200 reviews)"
         ratingLabel.font = UIFont.systemFont(ofSize: 16)
@@ -62,7 +62,7 @@ class RestaurantCardView: UIView {
 
     private func configureIcons() {
         starIconView.tintColor = .systemYellow
-        pinIconView.tintColor = UIColor.myBlue
+        pinIconView.tintColor = UIColor.myGreen
     }
 
     private func styleCard() {

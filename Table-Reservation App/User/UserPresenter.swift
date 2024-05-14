@@ -12,6 +12,7 @@ protocol UserPresenter {
     func bind(displayer: UserProfileDisplayer)
     func didTapUpdate(with model: UserModel)
     var delegate: UserProfilePresenterDelegate? { get set }
+    func onViewDidLoad()
 }
 
 class UserPresenterImpl: UserPresenter {
@@ -21,6 +22,17 @@ class UserPresenterImpl: UserPresenter {
 
     func bind(displayer: UserProfileDisplayer) {
         self.displayer = displayer
+    }
+
+    func onViewDidLoad() {
+        UserManager.shared.fetchUser { [weak self] result in
+            switch result {
+            case .success(let user):
+                self?.displayer?.showUser(user)
+            case .failure(let error):
+                self?.displayer?.showError(error)
+            }
+        }
     }
 
     func didTapUpdate(with model: UserModel) {

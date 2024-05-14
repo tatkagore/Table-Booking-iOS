@@ -25,7 +25,7 @@ class UserCardView: UIView {
     }
 
     private func setupView() {
-        self.backgroundColor = .myBlue
+        self.backgroundColor = .myGreen
         self.layer.cornerRadius = 10
         self.layer.shadowOpacity = 0.2
         self.layer.shadowRadius = 4

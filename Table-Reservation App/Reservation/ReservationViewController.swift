@@ -25,7 +25,7 @@ class ReservationViewController: UIViewController, ReservationDisplayer{
         label.text = "Chose date and time"
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
-        label.textColor = UIColor.myBlue
+        label.textColor = UIColor.myGreen
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -43,7 +43,7 @@ class ReservationViewController: UIViewController, ReservationDisplayer{
         label.text = "Additional information for booking"
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
-        label.textColor = UIColor.myBlue
+        label.textColor = UIColor.myGreen
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -67,7 +67,7 @@ class ReservationViewController: UIViewController, ReservationDisplayer{
         label.text = "Number of guests"
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
-        label.textColor = UIColor.myBlue
+        label.textColor = UIColor.myGreen
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

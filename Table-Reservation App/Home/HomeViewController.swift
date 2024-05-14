@@ -42,7 +42,7 @@ class HomeViewController: UIViewController, HomePresenterDelegate, CLLocationMan
         label.text = "Welcome"
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 30)
-        label.textColor = UIColor.myBlue
+        label.textColor = UIColor.myGreen
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -52,7 +52,7 @@ class HomeViewController: UIViewController, HomePresenterDelegate, CLLocationMan
         label.text = "Let's book a table!"
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 20)
-        label.textColor = UIColor.myBlue
+        label.textColor = UIColor.myGreen
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -60,7 +60,7 @@ class HomeViewController: UIViewController, HomePresenterDelegate, CLLocationMan
     var userProfileButton: profileButton = {
         let button = profileButton()
         // Set the image for the button
-        let buttonImage = UIImage(named: "New")
+        let buttonImage = UIImage(named: "avatar")
         button.setImage(buttonImage, for: .normal)
         button.addTarget(self, action: #selector(userProfileButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -105,7 +105,7 @@ class HomeViewController: UIViewController, HomePresenterDelegate, CLLocationMan
         mapView.addGestureRecognizer(tapRecognizer)
         centerMapOnLocation(address: "79 Av. Bosquet, 75007 Paris")
     }
-
+//
     @objc func userProfileButtonTapped() {
 //        let presenter = ReservationsListsPresenterImpl(navigationController: self.navigationController!)
 //        let reservationsListViewController = ReservationsListViewController(presenter: presenter, user: user)
@@ -113,7 +113,6 @@ class HomeViewController: UIViewController, HomePresenterDelegate, CLLocationMan
         let userProfileViewController = UserProfileViewController()
         userProfileViewController.user = user
         self.navigationController?.pushViewController(userProfileViewController, animated: true)
-
     }
 
     @objc func reserveButtonTapped() {
@@ -131,6 +130,7 @@ extension HomeViewController: HomeDisplayer {
     func showUser(_ user: UserModel) {
         // Update the UI on the main thread
         DispatchQueue.main.async { [weak self] in
+            print(user)
             self?.user = user
             if let firstName = user.firstName {
                 self?.helloUserNameLabel.text = "Welcome, \(firstName)"

@@ -102,10 +102,13 @@ class LoginPresenterImpl: LoginPresenter {
 private extension LoginPresenterImpl {
     func displayHome() {
         DispatchQueue.main.async { [weak self] in
-            let homeViewContoller = HomeViewController()
-            self?.navigationController.pushViewController(homeViewContoller, animated: true)
+                guard let window = UIApplication.shared.windows.first else { return }
+                let tabBarController = MainTabBarController() // Use your custom tab bar controller
 
-        }
+                // Reset the root view controller to the tab bar controller
+                window.rootViewController = tabBarController
+                window.makeKeyAndVisible()
+            }
     }
 
     func saveToken(authToken: String){

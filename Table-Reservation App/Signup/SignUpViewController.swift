@@ -82,7 +82,7 @@ class SignUpViewController: UIViewController, SignUpDisplayer {
     let backToLogin: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Login", for: .normal)
-        button.setTitleColor(UIColor.myBlue, for: .normal)
+        button.setTitleColor(UIColor.myGreen, for: .normal)
         button.addTarget(self, action: #selector(backToLoginButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button

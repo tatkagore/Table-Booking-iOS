@@ -14,7 +14,8 @@ protocol UserProfileDisplayer: AnyObject {
     func updateFailed(with error: Error)
     func showMessageSuccessful(with message: String)
     func showMessageFail(with message: String)
-
+    func showUser(_ user: UserModel)
+    func showError(_ error: Error)
 }
 
 protocol UserProfilePresenterDelegate: AnyObject {
@@ -25,8 +26,12 @@ class UserProfileViewController: UIViewController {
 
     // MARK: - Properties
 
-    var user: UserModel?
-    //
+    var user: UserModel? {
+        didSet {
+            displayUserData()
+        }
+    }
+
     var presenter: UserPresenter = UserPresenterImpl()
 
     let serverResponceLabel: UILabel = {
@@ -52,7 +57,7 @@ class UserProfileViewController: UIViewController {
         label.text = "Your name"
         label.textAlignment = .left
         label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        label.textColor = UIColor.myBlue
+        label.textColor = UIColor.myGreen
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -122,24 +127,33 @@ class UserProfileViewController: UIViewController {
 
         presenter.bind(displayer: self)
         setUpConstraints()
-        nameLabel.text = "\(self.user?.firstName ?? "UserName") \(self.user?.lastName ?? "Surname")"
-        firstNameTextField.text = self.user?.firstName
-        lastNameTextField.text = self.user?.lastName
-        emailTextField.text = self.user?.email
-        phoneNumberTextField.text = self.user?.phoneNumber
-        passwordTextField.isSecureTextEntry = true
+
+        presenter.onViewDidLoad()
     }
 
+
+
     // MARK: - Actions
+
+
+    private func displayUserData() {
+        guard let user = user else { return }
+        nameLabel.text = "\(self.user?.firstName ?? "UserName") \(self.user?.lastName ?? "Surname")"
+        firstNameTextField.text = user.firstName
+        lastNameTextField.text = user.lastName
+        emailTextField.text = user.email
+        phoneNumberTextField.text = user.phoneNumber
+        passwordTextField.isSecureTextEntry = true
+    }
 
     @objc
     func updateAccountButtonTapper() {
         // we don't want t o make a req if these fields are empty
 
-      guard let email = emailTextField.text, !email.isEmpty,
-            let firstName = firstNameTextField.text, !firstName.isEmpty,
-            let lastName = lastNameTextField.text, !lastName.isEmpty,
-            let phoneNumber = phoneNumberTextField.text, !lastName.isEmpty else {
+        guard let email = emailTextField.text, !email.isEmpty,
+              let firstName = firstNameTextField.text, !firstName.isEmpty,
+              let lastName = lastNameTextField.text, !lastName.isEmpty,
+              let phoneNumber = phoneNumberTextField.text, !lastName.isEmpty else {
             return
         }
 
@@ -154,6 +168,22 @@ class UserProfileViewController: UIViewController {
         }
         presenter.didTapUpdate(with: updateUser!)
     }
+
+    //    @objc
+    //    func logOutButtonTapped() {
+    //        let authManager = KeychainHelper()
+    //        do {
+    //            try authManager.logout()
+    //            // Log success
+    //            print("Token deleted from Keychain")
+    //            let presenter = LoginPresenterImpl(navigationController: navigationController!)
+    //            self.navigationController?.pushViewController(LoginViewController(presenter: presenter), animated: true)
+    //        } catch {
+    //            // Handle the error if logging out fails
+    //            print("Error logging out: \(error.localizedDescription)")
+    //        }
+    //    }
+    ////
     @objc
     func logOutButtonTapped() {
         let authManager = KeychainHelper()
@@ -161,8 +191,11 @@ class UserProfileViewController: UIViewController {
             try authManager.logout()
             // Log success
             print("Token deleted from Keychain")
-            let presenter = LoginPresenterImpl(navigationController: navigationController!)
-            self.navigationController?.pushViewController(LoginViewController(presenter: presenter), animated: true)
+
+            // Call the logout method on the SceneDelegate
+            if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+                sceneDelegate.logout()
+            }
         } catch {
             // Handle the error if logging out fails
             print("Error logging out: \(error.localizedDescription)")
@@ -171,13 +204,23 @@ class UserProfileViewController: UIViewController {
 }
 
 extension UserProfileViewController: UserProfileDisplayer {
+    func showError(_ error: Error) {
+        print("User data fetching error: \(error.localizedDescription)")
+    }
+
+    func showUser(_ user: UserModel) {
+        // Update the UI on the main thread
+        DispatchQueue.main.async { [weak self] in
+            self?.user = user
+        }
+    }
 
     func updateSuccessful(with user: UserModel) {
-            self.user = user
+        self.user = user
     }
 
     func updateFailed(with error: Error) {
-            self.showMessageFail(with: "Update failed")
+        self.showMessageFail(with: "Update failed")
     }
 
     func showMessageSuccessful(with message: String) {
