@@ -48,9 +48,10 @@
 		FEEBC90E2BF368EE00795253 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEBC90D2BF368EE00795253 /* MenuViewController.swift */; };
 		FEEBC9102BF3690700795253 /* MenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEBC90F2BF3690700795253 /* MenuPresenter.swift */; };
 		FEEBC9122BF36DD500795253 /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEBC9112BF36DD500795253 /* MenuModel.swift */; };
-		FEEBC9142BF3880200795253 /* MenuItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEBC9132BF3880200795253 /* MenuItemDetailViewController.swift */; };
+		FEEBC9142BF3880200795253 /* MenuCategoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEBC9132BF3880200795253 /* MenuCategoryDetailViewController.swift */; };
 		FEEBC9162BF38DA800795253 /* MenuCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEBC9152BF38DA800795253 /* MenuCategoryCell.swift */; };
 		FEEBC9192BF3C95700795253 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEBC9182BF3C95700795253 /* UserManager.swift */; };
+		FEEBC91B2BF4EF6900795253 /* MenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEBC91A2BF4EF6900795253 /* MenuItemCell.swift */; };
 		FEEBEBC62AF3D84700BA226E /* StyledTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEBEBC52AF3D84700BA226E /* StyledTextField.swift */; };
 		FEEBEBC92AF3E43800BA226E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEBEBC82AF3E43800BA226E /* SignUpViewController.swift */; };
 		FEEBEBCC2AF3E5C000BA226E /* ExtensionSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEEBEBCB2AF3E5C000BA226E /* ExtensionSignUpViewController.swift */; };
@@ -111,9 +112,10 @@
 		FEEBC90D2BF368EE00795253 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		FEEBC90F2BF3690700795253 /* MenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPresenter.swift; sourceTree = "<group>"; };
 		FEEBC9112BF36DD500795253 /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
-		FEEBC9132BF3880200795253 /* MenuItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemDetailViewController.swift; sourceTree = "<group>"; };
+		FEEBC9132BF3880200795253 /* MenuCategoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCategoryDetailViewController.swift; sourceTree = "<group>"; };
 		FEEBC9152BF38DA800795253 /* MenuCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCategoryCell.swift; sourceTree = "<group>"; };
 		FEEBC9182BF3C95700795253 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		FEEBC91A2BF4EF6900795253 /* MenuItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemCell.swift; sourceTree = "<group>"; };
 		FEEBEBC52AF3D84700BA226E /* StyledTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyledTextField.swift; sourceTree = "<group>"; };
 		FEEBEBC82AF3E43800BA226E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		FEEBEBCB2AF3E5C000BA226E /* ExtensionSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionSignUpViewController.swift; sourceTree = "<group>"; };
@@ -326,10 +328,11 @@
 			isa = PBXGroup;
 			children = (
 				FEEBC90D2BF368EE00795253 /* MenuViewController.swift */,
-				FEEBC9132BF3880200795253 /* MenuItemDetailViewController.swift */,
+				FEEBC9132BF3880200795253 /* MenuCategoryDetailViewController.swift */,
 				FEEBC90F2BF3690700795253 /* MenuPresenter.swift */,
 				FEEBC9112BF36DD500795253 /* MenuModel.swift */,
 				FEEBC9152BF38DA800795253 /* MenuCategoryCell.swift */,
+				FEEBC91A2BF4EF6900795253 /* MenuItemCell.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -515,10 +518,11 @@
 				FE9A79B92AE12A5D00946AA7 /* LoginViewController.swift in Sources */,
 				FE8F4CF72AFBDB4D0030DF41 /* UserViewControllerExtensions.swift in Sources */,
 				FE8937802AF41501001FDD6F /* SignUpPresenter.swift in Sources */,
-				FEEBC9142BF3880200795253 /* MenuItemDetailViewController.swift in Sources */,
+				FEEBC9142BF3880200795253 /* MenuCategoryDetailViewController.swift in Sources */,
 				FEEBC90E2BF368EE00795253 /* MenuViewController.swift in Sources */,
 				FE11CF672B752C7C002E52A6 /* ReservationTableViewCell.swift in Sources */,
 				FEEBC9082BF217AF00795253 /* MapKitView.swift in Sources */,
+				FEEBC91B2BF4EF6900795253 /* MenuItemCell.swift in Sources */,
 				FEEBEBCC2AF3E5C000BA226E /* ExtensionSignUpViewController.swift in Sources */,
 				FEEBC90B2BF3615600795253 /* TabBar.swift in Sources */,
 			);

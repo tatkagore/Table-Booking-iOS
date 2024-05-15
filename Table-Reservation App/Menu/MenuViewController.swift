@@ -66,11 +66,18 @@ extension MenuViewController:UICollectionViewDataSource, UICollectionViewDelegat
         return cell
     }
 
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let detailVC = MenuItemDetailViewController()
+//        detailVC.menuItem = categories[indexPath.item].items.first
+//        navigationController?.pushViewController(detailVC, animated: true)
+//    }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailVC = MenuItemDetailViewController()
-        detailVC.menuItem = categories[indexPath.item].items.first
+        let category = categories[indexPath.item]
+        let detailVC = MenuCategoryDetailViewController()
+        detailVC.category = category
         navigationController?.pushViewController(detailVC, animated: true)
     }
+
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
           let numberOfColumns: CGFloat = 2
