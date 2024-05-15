@@ -131,10 +131,7 @@ class UserProfileViewController: UIViewController {
         presenter.onViewDidLoad()
     }
 
-
-
     // MARK: - Actions
-
 
     private func displayUserData() {
         guard let user = user else { return }
@@ -149,7 +146,6 @@ class UserProfileViewController: UIViewController {
     @objc
     func updateAccountButtonTapper() {
         // we don't want t o make a req if these fields are empty
-
         guard let email = emailTextField.text, !email.isEmpty,
               let firstName = firstNameTextField.text, !firstName.isEmpty,
               let lastName = lastNameTextField.text, !lastName.isEmpty,

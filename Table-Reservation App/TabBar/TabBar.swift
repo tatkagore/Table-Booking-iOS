@@ -33,7 +33,7 @@ class MainTabBarController: UITabBarController {
         menuViewController.presenter = menuPresenter
         menuViewController.tabBarItem = UITabBarItem(title: "Menu", image: UIImage(systemName: "list.dash"), selectedImage: UIImage(systemName: "list.dash.fill"))
 
-        let controllers = [homeViewController, profileViewController, menuViewController].map {
+        let controllers = [homeViewController, menuViewController, profileViewController].map {
             UINavigationController(rootViewController: $0)
         }
         self.setViewControllers(controllers, animated: false)
