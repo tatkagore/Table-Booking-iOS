@@ -67,7 +67,14 @@ class profileButton: UIButton {
 
     private func setStyle() {
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.layer.cornerRadius = 16 // Set the corner radius as needed
+        self.layer.cornerRadius = 45 // Set the corner radius as needed
+
+        // Add border
+        self.layer.borderWidth = 2
+        self.layer.borderColor =  UIColor(hex: "006400").cgColor
+
+        // Set background color
+        self.backgroundColor = UIColor.myGreen.withAlphaComponent(0.1)
 
         // Add shadow
         self.layer.shadowColor = UIColor.black.cgColor
@@ -75,8 +82,27 @@ class profileButton: UIButton {
         self.layer.shadowOpacity = 0.5 // Adjust shadow opacity as needed
         self.layer.shadowRadius = 3.0 // Adjust shadow radius as needed
         self.layer.masksToBounds = false
+
+        // Add touch animations
+        addTapAnimation()
     }
 
+    private func addTapAnimation() {
+        self.addTarget(self, action: #selector(buttonTouchDown), for: .touchDown)
+        self.addTarget(self, action: #selector(buttonTouchUp), for: [.touchUpInside, .touchUpOutside, .touchCancel])
+    }
+
+    @objc private func buttonTouchDown(sender: UIButton) {
+        UIView.animate(withDuration: 0.1) {
+            sender.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+        }
+    }
+
+    @objc private func buttonTouchUp(sender: UIButton) {
+        UIView.animate(withDuration: 0.1) {
+            sender.transform = CGAffineTransform.identity
+        }
+    }
 }
 
 class MyAccountButton: UIButton {
@@ -195,6 +221,6 @@ class MyAccountButton: UIButton {
     }
 
     @objc private func rightButtonTapped() {
-            onRightButtonTapped?()
-        }
+        onRightButtonTapped?()
+    }
 }

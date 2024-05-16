@@ -11,6 +11,7 @@ struct MenuItem {
     let name: String
     let description: String
     let price: Double
+    let imageName: String
 }
 
 struct MenuCategory {

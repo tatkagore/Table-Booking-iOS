@@ -24,32 +24,34 @@ class MenuPresenterImpl: MenuPresenter {
     func fetchMenu() {
         let menuCategories = [
             MenuCategory(title: "Entrée", items: [
-                MenuItem(name: "French Onion Soup", description: "A rich beef broth with caramelized onions and cheese crouton.", price: 6.99),
-                MenuItem(name: "Bruschetta", description: "Grilled bread with tomato, basil, and mozzarella.", price: 5.99)
+                MenuItem(name: "French Onion Soup", description: "A rich beef broth with caramelized onions and cheese crouton.", price: 6.99, imageName: "French Onion Soup"),
+                MenuItem(name: "Bruschetta", description: "Grilled bread with tomato, basil, and mozzarella.", price: 5.99, imageName: "Bruschetta")
             ], imageName: "Entrée"),
 
             MenuCategory(title: "Plate", items: [
-                MenuItem(name: "Grilled Salmon", description: "Served with a lemon butter sauce and seasonal vegetables.", price: 15.99),
-                MenuItem(name: "Filet Mignon", description: "Tender beef filet served with garlic mashed potatoes.", price: 22.99)
+                MenuItem(name: "Grilled Salmon", description: "Served with a lemon butter sauce and seasonal vegetables.", price: 15.99, imageName: "Grilled Salmon"),
+                MenuItem(name: "Filet Mignon", description: "Tender beef filet served with garlic mashed potatoes.", price: 22.99, imageName: "Filet Mignon")
             ], imageName: "Plate"),
 
             MenuCategory(title: "Dessert", items: [
-                MenuItem(name: "Cheesecake", description: "Classic cheesecake with a graham cracker crust.", price: 6.99),
-                MenuItem(name: "Chocolate Lava Cake", description: "Warm chocolate cake with a molten center.", price: 7.99)
+                MenuItem(name: "Cheesecake", description: "Classic cheesecake with a graham cracker crust.", price: 6.99, imageName: "Cheesecake"),
+                MenuItem(name: "Chocolate Lava Cake", description: "Warm chocolate cake with a molten center.", price: 7.99, imageName: "Chocolate Lava Cake")
             ], imageName: "Dessert"),
 
             MenuCategory(title: "Appetizer", items: [
-                MenuItem(name: "Stuffed Mushrooms", description: "Mushrooms stuffed with cheese and herbs.", price: 6.99),
-                MenuItem(name: "Shrimp Cocktail", description: "Chilled shrimp served with cocktail sauce.", price: 8.99)
+                MenuItem(name: "Stuffed Mushrooms", description: "Mushrooms stuffed with cheese and herbs.", price: 6.99, imageName: "Stuffed Mushrooms"),
+                MenuItem(name: "Shrimp Cocktail", description: "Chilled shrimp served with cocktail sauce.", price: 8.99, imageName: "Shrimp Cocktail")
             ], imageName: "Appetizer"),
 
             MenuCategory(title: "Drinks", items: [
-                MenuItem(name: "Margarita", description: "Classic margarita with fresh lime juice.", price: 7.99),
-                MenuItem(name: "Mojito", description: "Refreshing mojito with mint and lime.", price: 6.99)
+                MenuItem(name: "Margarita", description: "Classic margarita with fresh lime juice.", price: 7.99, imageName: "Margarita"),
+                MenuItem(name: "Mojito", description: "Refreshing mojito with mint and lime.", price: 6.99, imageName: "Mojito")
             ], imageName: "Drinks"),
 
             MenuCategory(title: "Salad", items: [
-                MenuItem(name: "Greek Salad", description: "Traditional Greek salad is simple and vibrant. Fresh tomatoes, cucumber, red onion, olive and feta, tossed in an herby Greek salad dressing", price: 3.99)
+                MenuItem(name: "Greek Salad", description: "Traditional Greek salad is simple and vibrant. Fresh tomatoes, cucumber, red onion, olive and feta, tossed in an herby Greek salad dressing", price: 3.99, imageName: "Greek Salad"),
+                MenuItem(name: "Caesar salad", description: " romaine lettuce, croutons, Parmesan cheese, and Caesar dressing. The dressing is a mixture of olive oil, lemon juice, Worcestershire sauce, Dijon mustard, and garlic.", price: 4.99, imageName: "Caesar salad"),
+
             ], imageName: "Salad")
         ]
 
