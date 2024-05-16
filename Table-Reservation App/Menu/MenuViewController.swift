@@ -45,7 +45,6 @@ class MenuViewController: UIViewController {
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-//            collectionView.heightAnchor.constraint(equalToConstant: 100)
         ])
     }
 }
@@ -66,11 +65,6 @@ extension MenuViewController:UICollectionViewDataSource, UICollectionViewDelegat
         return cell
     }
 
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let detailVC = MenuItemDetailViewController()
-//        detailVC.menuItem = categories[indexPath.item].items.first
-//        navigationController?.pushViewController(detailVC, animated: true)
-//    }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let category = categories[indexPath.item]
         let detailVC = MenuCategoryDetailViewController()
