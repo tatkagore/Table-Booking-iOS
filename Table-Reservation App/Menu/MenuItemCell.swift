@@ -31,8 +31,17 @@ class MenuItemCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 14)
         label.textAlignment = .center
-        label.textColor = .gray
+        label.textColor = .orange
         return label
+    }()
+
+    private let priceBackgroundView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.myGreen
+        view.layer.cornerRadius = 5
+        view.clipsToBounds = true
+        return view
     }()
 
     private let descriptionLabel: UILabel = {
@@ -46,13 +55,36 @@ class MenuItemCell: UICollectionViewCell {
         return label
     }()
 
+    private let stepper: UIStepper = {
+        let stepper = UIStepper()
+        stepper.translatesAutoresizingMaskIntoConstraints = false
+        stepper.minimumValue = 1
+        stepper.maximumValue = 10
+        stepper.value = 1
+        stepper.addTarget(self, action: #selector(stepperValueChanged(_:)), for: .valueChanged)
+        return stepper
+    }()
+
+    private let stepperValueLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.textAlignment = .center
+        label.textColor = .black
+        label.text = "1"
+        return label
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(imageView)
         contentView.addSubview(nameLabel)
-        contentView.addSubview(priceLabel)
+        priceBackgroundView.addSubview(priceLabel)
+        contentView.addSubview(priceBackgroundView)
         contentView.addSubview(descriptionLabel)
-
+        contentView.addSubview(stepper)
+        contentView.addSubview(stepperValueLabel)
+        contentView.isUserInteractionEnabled = true
 
 
         NSLayoutConstraint.activate([
@@ -60,6 +92,15 @@ class MenuItemCell: UICollectionViewCell {
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             imageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.6),
+
+
+            priceBackgroundView.topAnchor.constraint(equalTo: imageView.topAnchor, constant: 8),
+            priceBackgroundView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -8),
+
+            priceLabel.topAnchor.constraint(equalTo: priceBackgroundView.topAnchor, constant: 4),
+            priceLabel.bottomAnchor.constraint(equalTo: priceBackgroundView.bottomAnchor, constant: -4),
+            priceLabel.leadingAnchor.constraint(equalTo: priceBackgroundView.leadingAnchor, constant: 8),
+            priceLabel.trailingAnchor.constraint(equalTo: priceBackgroundView.trailingAnchor, constant: -8),
 
             nameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8),
             nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
@@ -69,10 +110,11 @@ class MenuItemCell: UICollectionViewCell {
             descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
 
-            priceLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 4),
-            priceLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            priceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
-            priceLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
+            stepper.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 10),
+            stepper.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+
+            stepperValueLabel.topAnchor.constraint(equalTo: stepper.bottomAnchor, constant: 8),
+            stepperValueLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
         ])
     }
 
@@ -82,8 +124,12 @@ class MenuItemCell: UICollectionViewCell {
 
     func configure(with item: MenuItem) {
         nameLabel.text = item.name
-        priceLabel.text = "$\(item.price)"
+        priceLabel.text = "€\(item.price)"
         imageView.image = UIImage(named: item.imageName)
         descriptionLabel.text = item.description
+    }
+
+    @objc private func stepperValueChanged(_ sender: UIStepper) {
+        stepperValueLabel.text = "\(Int(sender.value))"
     }
 }
