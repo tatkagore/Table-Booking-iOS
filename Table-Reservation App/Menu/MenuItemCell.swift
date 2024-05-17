@@ -31,8 +31,17 @@ class MenuItemCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 14)
         label.textAlignment = .center
-        label.textColor = .gray
+        label.textColor = .white
         return label
+    }()
+
+    private let priceBackgroundView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.myGreen
+        view.layer.cornerRadius = 5
+        view.clipsToBounds = true
+        return view
     }()
 
     private let descriptionLabel: UILabel = {
@@ -46,33 +55,81 @@ class MenuItemCell: UICollectionViewCell {
         return label
     }()
 
+    private let stepper: UIStepper = {
+        let stepper = UIStepper()
+        stepper.translatesAutoresizingMaskIntoConstraints = false
+        stepper.minimumValue = 1
+        stepper.maximumValue = 10
+        stepper.value = 1
+        stepper.addTarget(self, action: #selector(stepperValueChanged(_:)), for: .valueChanged)
+        return stepper
+    }()
+
+    private let stepperValueLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.textAlignment = .center
+        label.textColor = .black
+        label.text = "1"
+        return label
+    }()
+
+    private let addButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Add", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.backgroundColor = .myGreen
+        button.layer.cornerRadius = 5
+        button.layer.borderWidth = 2
+        button.layer.borderColor = UIColor.white.cgColor
+
+        button.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.addSubview(imageView)
-        contentView.addSubview(nameLabel)
-        contentView.addSubview(priceLabel)
-        contentView.addSubview(descriptionLabel)
+        //        contentView.isUserInteractionEnabled = true
 
+        let stackView = UIStackView(arrangedSubviews: [imageView, nameLabel, descriptionLabel, stepperValueLabel])
+        stackView.axis = .vertical
+        stackView.spacing = 10
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+
+        contentView.addSubview(stackView)
+        contentView.addSubview(stepper)
+        contentView.addSubview(addButton)
+        stackView.addSubview(priceBackgroundView)
+        priceBackgroundView.addSubview(priceLabel)
 
 
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            imageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.6),
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
 
-            nameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8),
-            nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            priceBackgroundView.topAnchor.constraint(equalTo: imageView.topAnchor, constant: 8),
+            priceBackgroundView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -8),
 
-            descriptionLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 4),
-            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            priceLabel.topAnchor.constraint(equalTo: priceBackgroundView.topAnchor, constant: 4),
+            priceLabel.bottomAnchor.constraint(equalTo: priceBackgroundView.bottomAnchor, constant: -4),
+            priceLabel.leadingAnchor.constraint(equalTo: priceBackgroundView.leadingAnchor, constant: 8),
+            priceLabel.trailingAnchor.constraint(equalTo: priceBackgroundView.trailingAnchor, constant: -8),
 
-            priceLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 4),
-            priceLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            priceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
-            priceLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
+            imageView.heightAnchor.constraint(equalToConstant: 150),
+
+            stepper.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 8),
+            stepper.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+
+            addButton.topAnchor.constraint(equalTo: stepper.bottomAnchor, constant: 8),
+
+            addButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+            addButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            addButton.widthAnchor.constraint(equalToConstant: 100),
+            addButton.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
 
@@ -82,8 +139,25 @@ class MenuItemCell: UICollectionViewCell {
 
     func configure(with item: MenuItem) {
         nameLabel.text = item.name
-        priceLabel.text = "$\(item.price)"
+        priceLabel.text = "€\(item.price)"
         imageView.image = UIImage(named: item.imageName)
         descriptionLabel.text = item.description
+    }
+
+    @objc private func stepperValueChanged(_ sender: UIStepper) {
+        stepperValueLabel.text = "\(Int(sender.value))"
+    }
+    @objc private func addButtonTapped() {
+        print("Added to cart")
+
+        UIView.animate(withDuration: 0.1, animations: {
+            self.addButton.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+            self.addButton.backgroundColor = UIColor.darkGray
+        }) { _ in
+            UIView.animate(withDuration: 0.1) {
+                self.addButton.transform = CGAffineTransform.identity
+                self.addButton.backgroundColor = UIColor.myGreen
+            }
+        }
     }
 }

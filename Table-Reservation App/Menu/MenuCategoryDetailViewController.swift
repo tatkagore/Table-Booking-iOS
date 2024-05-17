@@ -41,6 +41,10 @@ class MenuCategoryDetailViewController: UIViewController {
 }
 
 extension MenuCategoryDetailViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+//    func numberOfSections(in collectionView: UICollectionView) -> Int {
+//        return 1
+//    }
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return category?.items.count ?? 0
     }
@@ -55,6 +59,6 @@ extension MenuCategoryDetailViewController: UICollectionViewDataSource, UICollec
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (collectionView.frame.width - 30) / 2
-        return CGSize(width: width, height: 250)
+        return CGSize(width: width, height: 400)
     }
 }
