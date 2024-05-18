@@ -92,7 +92,6 @@ class MenuItemCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        //        contentView.isUserInteractionEnabled = true
 
         let stackView = UIStackView(arrangedSubviews: [imageView, nameLabel, descriptionLabel, stepperValueLabel])
         stackView.axis = .vertical
@@ -104,7 +103,6 @@ class MenuItemCell: UICollectionViewCell {
         contentView.addSubview(addButton)
         stackView.addSubview(priceBackgroundView)
         priceBackgroundView.addSubview(priceLabel)
-
 
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0),
@@ -125,7 +123,6 @@ class MenuItemCell: UICollectionViewCell {
             stepper.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
 
             addButton.topAnchor.constraint(equalTo: stepper.bottomAnchor, constant: 8),
-
             addButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             addButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
             addButton.widthAnchor.constraint(equalToConstant: 100),
@@ -147,8 +144,21 @@ class MenuItemCell: UICollectionViewCell {
     @objc private func stepperValueChanged(_ sender: UIStepper) {
         stepperValueLabel.text = "\(Int(sender.value))"
     }
+
+   //MARK: Updates the cart with the quantity specified by a stepper.
+
     @objc private func addButtonTapped() {
         print("Added to cart")
+
+        // Get the quantity from the stepper
+        let quantity = Int(stepper.value)
+
+        // Update the cart count with the quantity
+        CartManager.shared.addItem(quantity: quantity)
+
+        // Reset the stepper to 1 after adding to the cart
+        stepper.value = 1
+        stepperValueLabel.text = "1"
 
         UIView.animate(withDuration: 0.1, animations: {
             self.addButton.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
