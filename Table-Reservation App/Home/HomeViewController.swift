@@ -57,13 +57,50 @@ class HomeViewController: UIViewController, HomePresenterDelegate, CLLocationMan
         return label
     }()
 
-    var userProfileButton: profileButton = {
-        let button = profileButton()
-        // Set the image for the button
-        let buttonImage = UIImage(named: "avatar")
-        button.setImage(buttonImage, for: .normal)
+    var cartButton: UIButton = {
+        let button = UIButton()
+
+        let buttonImage = UIImage(systemName: "cart")
+
+        // set the size of the image
+        let imageView = UIImageView(image: buttonImage)
+        imageView.contentMode = .scaleAspectFit
+        imageView.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+
+        button.addSubview(imageView)
+
+        // Position the imageView within the button
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            imageView.centerXAnchor.constraint(equalTo: button.centerXAnchor),
+            imageView.centerYAnchor.constraint(equalTo: button.centerYAnchor),
+            imageView.widthAnchor.constraint(equalToConstant: 40),
+            imageView.heightAnchor.constraint(equalToConstant: 40)
+        ])
+
         button.addTarget(self, action: #selector(userProfileButtonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
+
+        // Add badge label
+        let badgeLabel = UILabel()
+        badgeLabel.text = "0"
+        badgeLabel.textColor = .white
+        badgeLabel.backgroundColor = .red
+        badgeLabel.font = UIFont.systemFont(ofSize: 12)
+        badgeLabel.textAlignment = .center
+        badgeLabel.layer.cornerRadius = 10
+        badgeLabel.clipsToBounds = true
+        badgeLabel.translatesAutoresizingMaskIntoConstraints = false
+        button.addSubview(badgeLabel)
+
+        // badge constraints
+        NSLayoutConstraint.activate([
+            badgeLabel.topAnchor.constraint(equalTo: button.topAnchor, constant: -5),
+            badgeLabel.trailingAnchor.constraint(equalTo: button.trailingAnchor, constant: 7),
+            badgeLabel.widthAnchor.constraint(equalToConstant: 20),
+            badgeLabel.heightAnchor.constraint(equalToConstant: 20)
+        ])
+
         return button
     }()
 
@@ -88,6 +125,7 @@ class HomeViewController: UIViewController, HomePresenterDelegate, CLLocationMan
         return view
     }()
 
+    //MARK: OnViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -104,18 +142,35 @@ class HomeViewController: UIViewController, HomePresenterDelegate, CLLocationMan
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(toggleMapSize))
         mapView.addGestureRecognizer(tapRecognizer)
         centerMapOnLocation(address: "79 Av. Bosquet, 75007 Paris")
+
+        //MARK: Updates the badge count on the cart button whenever the cart is updated.
+        NotificationCenter.default.addObserver(self, selector: #selector(cartUpdated), name: .cartUpdated, object: nil)
     }
 
     @objc func userProfileButtonTapped() {
-        let presenter = ReservationsListsPresenterImpl(navigationController: self.navigationController!)
-        let reservationsListViewController = ReservationsListViewController(presenter: presenter, user: user)
-        self.navigationController?.pushViewController(reservationsListViewController, animated: true)
+        let presenter = OrderPresenterImpl()
+        let orderViewController = OrderViewController()
+        self.navigationController?.pushViewController(orderViewController, animated: true)
     }
 
     @objc func reserveButtonTapped() {
         let reservationViewController = ReservationViewController(user: user)
         // Modal presentation style
         self.present(UINavigationController(rootViewController: reservationViewController), animated: true, completion: nil)
+    }
+
+    @objc func cartUpdated() {
+        let itemCount = CartManager.shared.itemCount
+        updateBadgeCount(to: itemCount)
+    }
+
+    func updateBadgeCount(to count: Int) {
+        for subview in cartButton.subviews {
+            if let badgeLabel = subview as? UILabel {
+                badgeLabel.text = "\(count)"
+                break
+            }
+        }
     }
 }
 

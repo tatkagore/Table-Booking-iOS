@@ -77,6 +77,7 @@ class ReservationsListViewController: UIViewController {
         configureTableView()
         setUpConstraints()
         presenter.onViewDidLoad()
+        presenter.userDidLoad()
     }
 
     private func configureUserCardView() {

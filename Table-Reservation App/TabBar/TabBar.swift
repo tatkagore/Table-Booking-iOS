@@ -33,7 +33,12 @@ class MainTabBarController: UITabBarController {
         menuViewController.presenter = menuPresenter
         menuViewController.tabBarItem = UITabBarItem(title: "Menu", image: UIImage(systemName: "list.dash"), selectedImage: UIImage(systemName: "list.dash.fill"))
 
-        let controllers = [homeViewController, menuViewController, profileViewController].map {
+        // Reservations List View Controller Setup
+        let reservationsListPresenter = ReservationsListsPresenterImpl()
+        let reservationsListViewController = ReservationsListViewController(presenter: reservationsListPresenter, user: UserManager.shared.currentUser)
+        reservationsListViewController.tabBarItem = UITabBarItem(title: "Reservations", image: UIImage(systemName: "calendar"), selectedImage: UIImage(systemName: "calendar.fill"))
+        
+        let controllers = [homeViewController, menuViewController, reservationsListViewController, profileViewController].map {
             UINavigationController(rootViewController: $0)
         }
         self.setViewControllers(controllers, animated: false)

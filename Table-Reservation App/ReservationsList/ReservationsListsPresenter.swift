@@ -10,25 +10,31 @@ import UIKit
 protocol ReservationsListPresenter {
     func bind(displayer: ReservationsListDisplayer)
     func onViewDidLoad()
-    func  deleteReservation(with reservation: ReservationModel)
+    func deleteReservation(with reservation: ReservationModel)
     func fetchReservationsOfCurrentUser()
-    var delegate: ReservationsListPresenterDelegate? { get set }
+    var  delegate: ReservationsListPresenterDelegate? { get set }
+    func userDidLoad()
 }
 
 class ReservationsListsPresenterImpl: ReservationsListPresenter {
-    let navigationController: UINavigationController
     weak var displayer: ReservationsListDisplayer?
     weak var delegate: ReservationsListPresenterDelegate?
-
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
-    }
-
     func bind(displayer: ReservationsListDisplayer) {
         self.displayer = displayer
     }
 
     //MARK: onViewDidLoad
+
+    func userDidLoad() {
+        UserManager.shared.fetchUser { [weak self] result in
+            switch result {
+            case .success(let user):
+                self?.displayer?.fetchedUser(with: user)
+            case .failure(let error):
+                self?.displayer?.showError(error)
+            }
+        }
+    }
 
     func onViewDidLoad() {
         fetchReservationsOfCurrentUser()

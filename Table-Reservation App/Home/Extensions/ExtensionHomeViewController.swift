@@ -25,7 +25,7 @@ extension HomeViewController {
         contentView.addSubview(restaurantImageView)
         contentView.addSubview(restaurantCardView)
         contentView.addSubview(reserveButton)
-        contentView.addSubview(userProfileButton)
+        contentView.addSubview(cartButton)
         contentView.addSubview(mapView)
 
         NSLayoutConstraint.activate([
@@ -42,14 +42,15 @@ extension HomeViewController {
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor),
 
-            userProfileButton.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: -5),
-            userProfileButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            userProfileButton.widthAnchor.constraint(equalToConstant: 90),
-            userProfileButton.heightAnchor.constraint(equalToConstant: 90),
+            cartButton.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: -5),
+               cartButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+               cartButton.widthAnchor.constraint(equalToConstant: 50),
+               cartButton.heightAnchor.constraint(equalToConstant: 50),
+
 
             stackView1.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 10),
             stackView1.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            stackView1.trailingAnchor.constraint(equalTo: userProfileButton.leadingAnchor, constant: 10),
+            stackView1.trailingAnchor.constraint(equalTo: cartButton.leadingAnchor, constant: 10),
 
             restaurantImageView.topAnchor.constraint(equalTo: stackView1.bottomAnchor, constant: 20),
             restaurantImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
@@ -66,11 +67,9 @@ extension HomeViewController {
             mapView.heightAnchor.constraint(equalTo: restaurantCardView.heightAnchor),
 
 
-            //            reserveButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             reserveButton.topAnchor.constraint(equalTo:  mapView.bottomAnchor, constant: 20),
             reserveButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             reserveButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            //            reserveButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -30)
         ])
     }
 }
