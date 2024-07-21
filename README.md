@@ -36,3 +36,10 @@ The app seamlessly integrates with the backend created using Node.js, Express, a
 3. Ensure the backend server is running and accessible.
 4. Update the app's configurations (e.g., API endpoint URLs) if necessary.
 5. Build and run the app on a simulator or device.
+
+
+### Screen Recording:
+
+![Simulator Screen Recording - iPhone 15 Pro - 2024-06-10 at 17 19 09 (1)](https://github.com/user-attachments/assets/cd9fc0d6-b06a-4d49-b215-590f963f9bd9)
+
+
